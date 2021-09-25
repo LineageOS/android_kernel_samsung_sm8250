@@ -1510,6 +1510,10 @@ static void wacom_i2c_coord_handler(struct wacom_i2c *wac_i2c, char *data)
 		wac_i2c->mcount = 0;
 	}
 
+#ifdef CONFIG_TOUCHSCREEN_NOVATEK_NT36523
+	nt36523_epen_mode = wac_i2c->pen_prox || wac_i2c->pen_pressed;
+#endif
+
 	return;
 }
 
