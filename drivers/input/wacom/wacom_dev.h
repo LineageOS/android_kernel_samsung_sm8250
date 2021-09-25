@@ -545,6 +545,10 @@ extern int get_lcd_attached(char *mode);
 extern int get_lcd_info(char *arg);
 #endif
 
+#ifdef CONFIG_TOUCHSCREEN_NOVATEK_NT36523
+extern bool nt36523_epen_mode;
+#endif
+
 int wacom_power(struct wacom_i2c *, bool on);
 void wacom_reset_hw(struct wacom_i2c *);
 

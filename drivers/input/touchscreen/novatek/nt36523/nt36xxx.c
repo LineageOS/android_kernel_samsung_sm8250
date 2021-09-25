@@ -59,6 +59,8 @@ int nvt_ts_mode_read(struct nvt_ts_data *ts);
 
 static int nvt_ts_check_chip_ver_trim(struct nvt_ts_data *ts, uint32_t chip_ver_trim_addr);
 
+bool nt36523_epen_mode = false;
+EXPORT_SYMBOL(nt36523_epen_mode);
 
 #ifdef CONFIG_DISPLAY_SAMSUNG
 extern int get_lcd_attached(char *mode);
@@ -975,6 +977,9 @@ static void nvt_ts_event_handler(struct nvt_ts_data *ts)
 	int finger_cnt;
 	int i;
 	int ret;
+
+	if (nt36523_epen_mode)
+		return;
 
 	if (ts->power_status == POWER_LPM_STATUS) {
 		wake_lock_timeout(&ts->wakelock, msecs_to_jiffies(500));
