@@ -377,6 +377,7 @@ int ss_dsi_panel_parse_cmd_sets(struct dsi_panel_cmd_set *cmd_sets,
 			struct dsi_panel *panel);
 #endif
 
+int dsi_panel_set_fod_hbm(struct dsi_panel *panel, bool status);
 
 bool dsi_panel_get_fod_ui(struct dsi_panel *panel);
 void dsi_panel_set_fod_ui(struct dsi_panel *panel, bool status);

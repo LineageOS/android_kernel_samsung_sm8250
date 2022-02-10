@@ -3233,6 +3233,21 @@ count_fail:
 	return rc;
 }
 
+int dsi_panel_set_fod_hbm(struct dsi_panel *panel, bool status)
+{
+	struct dsi_display *display = get_main_display();
+	struct samsung_display_driver_data *vdd = (struct samsung_display_driver_data *)display->panel->panel_private;
+
+	if (status)
+		vdd->br_info.common_br.finger_mask_bl_level = 311;
+	else
+		vdd->br_info.common_br.finger_mask_bl_level = 0;
+
+	vdd->finger_mask_enable = status;
+
+	return 0;
+}
+
 static int dsi_panel_parse_bl_pwm_config(struct dsi_panel *panel)
 {
 	int rc = 0;
