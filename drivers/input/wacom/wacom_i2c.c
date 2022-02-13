@@ -1611,9 +1611,11 @@ static irqreturn_t wacom_interrupt_pdct(int irq, void *dev_id)
 #endif
 
 	wac_i2c->pen_pdct = gpio_get_value(wac_i2c->pdata->pdct_gpio);
-	if (wac_i2c->pen_pdct)
+	if (wac_i2c->pen_pdct) {
 		wac_i2c->function_result &= ~EPEN_EVENT_PEN_OUT;
-	else
+		if (wac_i2c->charging)
+			start_epen_ble_charging(wac_i2c);
+	} else
 		wac_i2c->function_result |= EPEN_EVENT_PEN_OUT;
 
 	if (wac_i2c->pdata->use_garage) {
