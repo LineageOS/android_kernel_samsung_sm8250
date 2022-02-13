@@ -535,6 +535,8 @@ struct wacom_i2c {
 	int ble_hist_index;
 	char cover;
 	u8 flip_state;
+
+	bool charging;
 };
 
 extern struct wacom_i2c *g_wac_i2c;
@@ -590,3 +592,5 @@ int wacom_check_ub(struct i2c_client *client);
 
 void wacom_swap_compensation(struct wacom_i2c *wac_i2c, char cmd);
 int wacom_ble_charge_mode(struct wacom_i2c *wac_i2c, int mode);
+
+int start_epen_ble_charging(struct wacom_i2c *wac_i2c);
