@@ -241,6 +241,7 @@ struct dsi_panel {
 	bool fod_hbm_enabled;
 	bool fod_ui;
 	bool force_fod_ui;
+	bool force_fod_dim_alpha;
 
 	enum dsi_dms_mode dms_mode;
 
