@@ -12,25 +12,25 @@ include $(srctree)/techpack/audio/config/sm8150auto.conf
 export $(shell sed 's/=.*//' $(srctree)/techpack/audio/config/sm8150auto.conf)
 endif
 ifeq ($(CONFIG_ARCH_KONA), y)
-ifeq ($(PROJECT_NAME),$(filter $(PROJECT_NAME),x1q y2q z3q))
+ifneq ($(filter y,$(CONFIG_SEC_X1Q_PROJECT) $(CONFIG_SEC_Y2Q_PROJECT) $(CONFIG_SEC_Z3Q_PROJECT)),)
 include $(srctree)/techpack/audio/config/kona_picassoq.conf
 export $(shell sed 's/=.*//' $(srctree)/techpack/audio/config/kona_picassoq.conf)
-else ifeq ($(PROJECT_NAME),$(filter $(PROJECT_NAME),c1q c2q))
+else ifneq ($(filter y,$(CONFIG_SEC_C1Q_PROJECT) $(CONFIG_SEC_C2Q_PROJECT)),)
 include $(srctree)/techpack/audio/config/kona_canvasq.conf
 export $(shell sed 's/=.*//' $(srctree)/techpack/audio/config/kona_canvasq.conf)
-else ifeq ($(PROJECT_NAME),$(filter $(PROJECT_NAME),f2q win2q))
+else ifneq ($(filter y,$(CONFIG_SEC_F2Q_PROJECT) $(CONFIG_SEC_WIN2Q_PROJECT)),)
 include $(srctree)/techpack/audio/config/kona_f2.conf
 export $(shell sed 's/=.*//' $(srctree)/techpack/audio/config/kona_f2.conf)
-else ifeq ($(PROJECT_NAME),$(filter $(PROJECT_NAME),gts7l gts7lwifi gts7xl gts7xlwifi))
+else ifneq ($(filter y,$(CONFIG_SEC_GTS7L_PROJECT) $(CONFIG_SEC_GTS7XL_PROJECT)),)
 include $(srctree)/techpack/audio/config/kona_gts7xl.conf
 export $(shell sed 's/=.*//' $(srctree)/techpack/audio/config/kona_gts7xl.conf)
-else ifeq ($(PROJECT_NAME),$(filter $(PROJECT_NAME),bloomxq))
+else ifeq ($(CONFIG_SEC_BLOOMXQ_PROJECT), y)
 include $(srctree)/techpack/audio/config/kona_bloomx.conf
 export $(shell sed 's/=.*//' $(srctree)/techpack/audio/config/kona_bloomx.conf)
-else ifeq ($(PROJECT_NAME),$(filter $(PROJECT_NAME),r8q))
+else ifeq ($(CONFIG_SEC_R8Q_PROJECT), y)
 include $(srctree)/techpack/audio/config/kona_r8.conf
 export $(shell sed 's/=.*//' $(srctree)/techpack/audio/config/kona_r8.conf)
-else ifeq ($(PROJECT_NAME),$(filter $(PROJECT_NAME),victory))
+else ifeq ($(CONFIG_SEC_VICTORY_PROJECT), y)
 include $(srctree)/techpack/audio/config/kona_victory.conf
 export $(shell sed 's/=.*//' $(srctree)/techpack/audio/config/kona_victory.conf)
 else
@@ -75,25 +75,25 @@ LINUXINCLUDE    += \
                 -include $(srctree)/techpack/audio/config/sm8150autoconf.h
 endif
 ifeq ($(CONFIG_ARCH_KONA), y)
-ifeq ($(PROJECT_NAME),$(filter $(PROJECT_NAME),x1q y2q z3q))
+ifneq ($(filter y,$(CONFIG_SEC_X1Q_PROJECT) $(CONFIG_SEC_Y2Q_PROJECT) $(CONFIG_SEC_Z3Q_PROJECT)),)
 LINUXINCLUDE    += \
                 -include $(srctree)/techpack/audio/config/kona_picassoq.h
-else ifeq ($(PROJECT_NAME),$(filter $(PROJECT_NAME),c1q c2q))
+else ifneq ($(filter y,$(CONFIG_SEC_C1Q_PROJECT) $(CONFIG_SEC_C2Q_PROJECT)),)
 LINUXINCLUDE    += \
                 -include $(srctree)/techpack/audio/config/kona_canvasq.h
-else ifeq ($(PROJECT_NAME),$(filter $(PROJECT_NAME),f2q win2q))
+else ifneq ($(filter y,$(CONFIG_SEC_F2Q_PROJECT) $(CONFIG_SEC_WIN2Q_PROJECT)),)
 LINUXINCLUDE    += \
                 -include $(srctree)/techpack/audio/config/kona_f2.h
-else ifeq ($(PROJECT_NAME),$(filter $(PROJECT_NAME),gts7l gts7lwifi gts7xl gts7xlwifi))
+else ifneq ($(filter y,$(CONFIG_SEC_GTS7L_PROJECT) $(CONFIG_SEC_GTS7XL_PROJECT)),)
 LINUXINCLUDE    += \
                 -include $(srctree)/techpack/audio/config/kona_gts7xl.h
-else ifeq ($(PROJECT_NAME),$(filter $(PROJECT_NAME),bloomxq))
+else ifeq ($(CONFIG_SEC_BLOOMXQ_PROJECT), y)
 LINUXINCLUDE    += \
                 -include $(srctree)/techpack/audio/config/kona_bloomx.h
-else ifeq ($(PROJECT_NAME),$(filter $(PROJECT_NAME),r8q))
+else ifeq ($(CONFIG_SEC_R8Q_PROJECT), y)
 LINUXINCLUDE    += \
                 -include $(srctree)/techpack/audio/config/kona_r8.h
-else ifeq ($(PROJECT_NAME),$(filter $(PROJECT_NAME),victory))
+else ifeq ($(CONFIG_SEC_VICTORY_PROJECT), y)
 LINUXINCLUDE    += \
                 -include $(srctree)/techpack/audio/config/kona_victory.h
 else
