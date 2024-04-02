@@ -61,7 +61,7 @@ static void wacom_cover_work(struct work_struct *work)
 	pr_info("keys:%s #1 : %d\n", __func__, hall_wacom_status);
 
 	input_report_switch(ddata->input,
-			SW_WACOM_HALL, !hall_wacom_status);
+			SW_MACHINE_COVER, !hall_wacom_status);
 	input_sync(ddata->input);
 }
 
@@ -198,7 +198,7 @@ static int hall_wacom_probe(struct platform_device *pdev)
 	input->dev.parent = &pdev->dev;
 
 	input->evbit[0] |= BIT_MASK(EV_SW);
-	input_set_capability(input, EV_SW, SW_WACOM_HALL);
+	input_set_capability(input, EV_SW, SW_MACHINE_COVER);
 
 	input->open = wacom_hall_open;
 	input->close = wacom_hall_close;

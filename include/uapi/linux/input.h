@@ -365,12 +365,6 @@ struct input_mask {
 #define EVIOCSCLOCKID		_IOW('E', 0xa0, int)			/* Set clockid to be used for timestamps */
 
 /*
- * Switch events
- */
-#define SW_CERTIFYHALL          0x1b  /* set = certify_hall attach/detach */
-#define SW_WACOM_HALL		0x1e  /* set = wacom hall ic attach/detach */
-
-/*
  * IDs.
  */
 
