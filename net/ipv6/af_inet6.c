@@ -128,7 +128,10 @@ void inet6_sock_destruct(struct sock *sk)
 }
 EXPORT_SYMBOL_GPL(inet6_sock_destruct);
 
-static int inet6_create(struct net *net, struct socket *sock, int protocol,
+#ifndef CONFIG_MPTCP
+static
+#endif
+int inet6_create(struct net *net, struct socket *sock, int protocol,
 			int kern)
 {
 	struct inet_sock *inet;
