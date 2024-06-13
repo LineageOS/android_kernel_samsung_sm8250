@@ -20,6 +20,12 @@
 #include <linux/input/qpnp-power-on.h>
 #include <linux/fb.h>
 #endif
+
+#ifdef CONFIG_CPU_FREQ_LIMIT_USERSPACE
+#include <linux/cpufreq.h>
+#include <linux/cpufreq_limit.h>
+#endif
+
 #include "power.h"
 
 #ifdef CONFIG_SEC_PM
@@ -787,6 +793,162 @@ power_attr(wake_unlock);
 #endif /* CONFIG_PM_WAKELOCKS */
 #endif /* CONFIG_PM_SLEEP */
 
+#ifdef CONFIG_CPU_FREQ_LIMIT_USERSPACE
+#define MAX_BUF_SIZE	100
+DEFINE_MUTEX(cpufreq_limit_mutex);
+
+int set_freq_limit(unsigned long id, unsigned int freq)
+{
+	int ret = 0;
+	struct cpufreq_limit_handle *handle =
+							cpufreq_limit_get_handle(id);
+
+	pr_debug("%s: id(%d) freq(%d)\n", __func__, (int)id, freq);
+
+	mutex_lock(&cpufreq_limit_mutex);
+
+	if (freq != -1) {
+		ret = cpufreq_limit_get(freq, handle);
+		if (ret)
+			pr_err("%s: cpufreq_limit_get fail %lu, %u, %d\n",
+									__func__, id, freq, ret);
+	} else
+		cpufreq_limit_put(handle);
+
+	mutex_unlock(&cpufreq_limit_mutex);
+
+	return ret;
+}
+
+static ssize_t cpufreq_table_show(struct kobject *kobj,
+			struct kobj_attribute *attr, char *buf)
+{
+	ssize_t len = 0;
+#ifndef CONFIG_CPU_FREQ_LIMIT
+	int i, count = 0;
+	unsigned int freq;
+
+	struct cpufreq_frequency_table *table;
+
+	table = cpufreq_frequency_get_table(0);
+	if (table == NULL)
+		return 0;
+
+	for (i = 0; table[i].frequency != CPUFREQ_TABLE_END; i++)
+		count = i;
+
+	for (i = count; i >= 0; i--) {
+		freq = table[i].frequency;
+
+		if (freq == CPUFREQ_ENTRY_INVALID)
+			continue;
+
+		len += snprintf(buf + len, MAX_BUF_SIZE, "%u ", freq);
+	}
+
+	len--;
+	len += snprintf(buf + len, MAX_BUF_SIZE, "\n");
+#else
+	len = cpufreq_limit_get_table(buf);
+#endif
+
+	return len;
+}
+
+static ssize_t cpufreq_table_store(struct kobject *kobj,
+				struct kobj_attribute *attr,
+				const char *buf, size_t n)
+{
+	pr_err("%s: cpufreq_table is read-only\n", __func__);
+	return -EINVAL;
+}
+
+static ssize_t cpufreq_max_limit_show(struct kobject *kobj,
+					struct kobj_attribute *attr,
+					char *buf)
+{
+	return snprintf(buf, MAX_BUF_SIZE, "%d\n", cpufreq_limit_get_cur_max());
+}
+
+static ssize_t cpufreq_max_limit_store(struct kobject *kobj,
+					struct kobj_attribute *attr,
+					const char *buf, size_t n)
+{
+	int freq;
+	ssize_t ret = -EINVAL;
+
+	ret = kstrtoint(buf, 10, &freq);
+	if (ret < 0) {
+		pr_err("%s: Invalid cpufreq format\n", __func__);
+		return ret;
+	}
+
+	set_freq_limit(DVFS_USER_MAX_ID, freq);
+	ret = n;
+
+	return ret;
+}
+
+static ssize_t cpufreq_min_limit_show(struct kobject *kobj,
+					struct kobj_attribute *attr,
+					char *buf)
+{
+	return snprintf(buf, MAX_BUF_SIZE, "%d\n", cpufreq_limit_get_cur_min());
+}
+
+static ssize_t cpufreq_min_limit_store(struct kobject *kobj,
+					struct kobj_attribute *attr,
+					const char *buf, size_t n)
+{
+	int freq;
+	ssize_t ret = -EINVAL;
+
+	ret = kstrtoint(buf, 10, &freq);
+	if (ret < 0) {
+		pr_err("%s: Invalid cpufreq format\n", __func__);
+		return ret;
+	}
+
+	set_freq_limit(DVFS_USER_MIN_ID, freq);
+	ret = n;
+
+	return ret;
+}
+
+static ssize_t over_limit_show(struct kobject *kobj,
+					struct kobj_attribute *attr,
+					char *buf)
+{
+	return snprintf(buf, MAX_BUF_SIZE, "%d\n", cpufreq_limit_get_over_limit());
+}
+
+static ssize_t over_limit_store(struct kobject *kobj,
+					struct kobj_attribute *attr,
+					const char *buf, size_t n)
+{
+	unsigned int val;
+	ssize_t ret = -EINVAL;
+
+	ret = kstrtoint(buf, 10, &val);
+	if (ret < 0) {
+		pr_err("%s: Invalid cpufreq format\n", __func__);
+		goto out;
+	}
+
+	mutex_lock(&cpufreq_limit_mutex);
+	cpufreq_limit_set_over_limit((unsigned int)val);
+	mutex_unlock(&cpufreq_limit_mutex);
+	ret = n;
+out:
+	return ret;
+}
+
+power_attr(cpufreq_table);
+power_attr(cpufreq_max_limit);
+power_attr(cpufreq_min_limit);
+power_attr(over_limit);
+#endif
+
 #ifdef CONFIG_PM_TRACE
 int pm_trace_enabled;
 
@@ -891,6 +1053,40 @@ static ssize_t rtc_status_show(struct kobject *kobj,
 power_attr_ro(rtc_status);
 #endif /* CONFIG_SEC_PM */
 
+#if defined(CONFIG_FOTA_LIMIT)
+static char fota_limit_str[] =
+#if defined(CONFIG_ARCH_KONA)
+	"[START]\n"
+#if defined(CONFIG_SEC_BLOOMXQ_PROJECT)
+	"/sys/power/cpufreq_max_limit 1401600\n"
+#else
+	"/sys/power/cpufreq_max_limit 1516800\n"
+#endif
+	"[STOP]\n"
+	"/sys/power/cpufreq_max_limit -1\n"
+	"[END]\n";
+#else
+	"[NOT_SUPPORT]\n";
+#endif
+
+static ssize_t fota_limit_show(struct kobject *kobj,
+					struct kobj_attribute *attr,
+					char *buf)
+{
+	pr_info("%s\n", __func__);
+	return sprintf(buf, "%s", fota_limit_str);
+}
+
+static struct kobj_attribute fota_limit_attr = {
+	.attr	= {
+		.name = __stringify(fota_limit),
+		.mode = 0440,
+	},
+	.show	= fota_limit_show,
+};
+#endif /* CONFIG_FOTA_LIMIT */
+
+
 static struct attribute * g[] = {
 	&state_attr.attr,
 #ifdef CONFIG_PM_TRACE
@@ -917,6 +1113,12 @@ static struct attribute * g[] = {
 	&pm_debug_messages_attr.attr,
 #endif
 #endif
+#ifdef CONFIG_CPU_FREQ_LIMIT_USERSPACE
+	&cpufreq_table_attr.attr,
+	&cpufreq_max_limit_attr.attr,
+	&cpufreq_min_limit_attr.attr,
+	&over_limit_attr.attr,
+#endif
 #ifdef CONFIG_FREEZER
 	&pm_freeze_timeout_attr.attr,
 #endif
@@ -924,6 +1126,9 @@ static struct attribute * g[] = {
 	&volkey_wakeup_attr.attr,
 	&rtc_status_attr.attr,
 #endif
+#if defined(CONFIG_FOTA_LIMIT)
+	&fota_limit_attr.attr,
+#endif /* CONFIG_FOTA_LIMIT */
 	NULL,
 };
 
