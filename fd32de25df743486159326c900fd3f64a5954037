@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c9c0d30_a3990980",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 33569
+      },
+      "writtenOn": "2024-06-23T09:53:43Z",
+      "side": 1,
+      "message": "No compilation issues were observed with the bluesleep driver after this change for XYZ projects.",
+      "revId": "fd32de25df743486159326c900fd3f64a5954037",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
