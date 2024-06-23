@@ -16,6 +16,23 @@
       "message": "No compilation issues were observed with XYZ config fragments.",
       "revId": "3e2601caa0a33fdaa22109d68614f27e325ce9bc",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d219609_f650cf40",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 33569
+      },
+      "writtenOn": "2024-06-23T10:09:39Z",
+      "side": 1,
+      "message": "Note that these changes have not been tested with a proper device and may require further changes if someone decides to use an SM8250 device with a broadcom chip. These drivers are included solely to maintain compatibility with other Samsung Kona devices such as the S20 series.",
+      "revId": "3e2601caa0a33fdaa22109d68614f27e325ce9bc",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
