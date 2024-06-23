@@ -16,6 +16,23 @@
       "message": "No compilation issues were observed with XYZ config fragments and samsung provided msm-geni-serial driver.",
       "revId": "6c90ccc915003c59db3deffbfa8b81d4612476db",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6a25ca5_3c518494",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 33569
+      },
+      "writtenOn": "2024-06-23T10:12:26Z",
+      "side": 1,
+      "message": "Note that these changes have not been tested with a proper device and may require further changes if someone decides to use an SM8250 device with a broadcom chip. These drivers are included solely to maintain compatibility with other Samsung Kona devices such as the S20 series.",
+      "revId": "6c90ccc915003c59db3deffbfa8b81d4612476db",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
