@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fa89cac_ab59c229",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 33569
+      },
+      "writtenOn": "2024-06-23T09:49:33Z",
+      "side": 1,
+      "message": "No compilation issues were observed with XYZ config fragments and samsung provided msm-geni-serial driver.",
+      "revId": "6c90ccc915003c59db3deffbfa8b81d4612476db",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
