@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f6ed26d_dc741a2a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 33569
+      },
+      "writtenOn": "2024-06-23T09:46:20Z",
+      "side": 1,
+      "message": "No compilation issues were observed with XYZ config fragments.",
+      "revId": "3e2601caa0a33fdaa22109d68614f27e325ce9bc",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
