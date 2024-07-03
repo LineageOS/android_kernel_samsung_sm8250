@@ -1637,7 +1637,7 @@ static irqreturn_t wacom_interrupt_pdct(int irq, void *dev_id)
 			}
 		}
 
-		input_report_switch(wac_i2c->input_dev, SW_PEN_INSERT,
+		input_report_switch(wac_i2c->input_dev, SW_PEN_INSERTED,
 				(wac_i2c->function_result & EPEN_EVENT_PEN_OUT));
 		input_sync(wac_i2c->input_dev);
 
@@ -1705,7 +1705,7 @@ static void pen_insert_work(struct work_struct *work)
 			wac_i2c->function_result |= EPEN_EVENT_PEN_OUT;
 	}
 
-	input_report_switch(wac_i2c->input_dev, SW_PEN_INSERT,
+	input_report_switch(wac_i2c->input_dev, SW_PEN_INSERTED,
 			(wac_i2c->function_result & EPEN_EVENT_PEN_OUT));
 	input_sync(wac_i2c->input_dev);
 
@@ -1798,7 +1798,7 @@ static void wacom_i2c_set_input_values(struct wacom_i2c *wac_i2c,
 	input_set_capability(input_dev, EV_KEY, BTN_TOUCH);
 	input_set_capability(input_dev, EV_KEY, BTN_STYLUS);
 
-	input_set_capability(input_dev, EV_SW, SW_PEN_INSERT);
+	input_set_capability(input_dev, EV_SW, SW_PEN_INSERTED);
 
 	/* AOP */
 	input_set_capability(input_dev, EV_KEY, KEY_WAKEUP_UNLOCK);
