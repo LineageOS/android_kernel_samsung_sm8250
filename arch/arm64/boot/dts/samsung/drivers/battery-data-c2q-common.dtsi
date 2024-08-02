@@ -115,6 +115,8 @@
 		battery,wpc_thermal_source = <2>; /* SEC_BATTERY_THERMAL_SOURCE_ADC */
 		battery,dchg_thermal_source = <3>; /* SEC_BATTERY_THERMAL_SOURCE_CHG_ADC */
 
+		battery,lrp_temp_check_type = <3>;
+
 		battery,polling_time = <10 30 30 30 3600>;
 
 		battery,temp_table_adc = <144960 166651 193317 223723 259428
@@ -209,8 +211,8 @@
 		battery,temp_high_recovery_lpm = <480>;
 		battery,temp_low_threshold_lpm = <0>;
 		battery,temp_low_recovery_lpm = <20>;
-		battery,wpc_high_threshold_normal = <450>;
-		battery,wpc_high_recovery_normal = <430>;
+		battery,wpc_high_threshold_normal = <500>;
+		battery,wpc_high_recovery_normal = <480>;
 		battery,wpc_low_threshold_normal = <0>;
 		battery,wpc_low_recovery_normal = <20>;
 		battery,tx_high_threshold = <450>;
@@ -223,12 +225,12 @@
 		battery,chg_gpio_full_check = <0>;
 		battery,chg_polarity_full_check = <1>;
 
-		battery,chg_high_temp = <500>;
-		battery,chg_high_temp_recovery = <440>;
-		battery,dchg_high_temp = <490>;
-		battery,dchg_high_temp_recovery = <430>;
-		battery,dchg_high_batt_temp = <400>;
-		battery,dchg_high_batt_temp_recovery = <380>;
+		battery,chg_high_temp = <600>;
+		battery,chg_high_temp_recovery = <580>;
+		battery,dchg_high_temp = <1000 1000 570 570>;
+		battery,dchg_high_temp_recovery = <1000 1000 530 530>;
+		battery,dchg_high_batt_temp = <1000 1000 1000 400>;
+		battery,dchg_high_batt_temp_recovery = <1000 1000 1000 390>;
 		battery,chg_input_limit_current = <1000>;
 		battery,chg_charging_limit_current = <1400>;
 		battery,dchg_input_limit_current = <1000>;
@@ -245,7 +247,7 @@
 		battery,wpc_temp_lcd_on_control_source = <1>; /* TEMP_CONTROL_SOURCE_BAT_THM = WPC_THM */
 		battery,wpc_lcd_on_high_temp = <390>;
 		battery,wpc_lcd_on_high_temp_rec = <370>;
-		battery,wpc_lcd_on_input_limit_current = <450>;
+		battery,wpc_lcd_on_input_limit_current = <600>;
 
 		battery,wpc_store_high_temp = <360>;
 		battery,wpc_store_high_temp_recovery = <340>;
@@ -262,6 +264,9 @@
 		battery,mix_high_temp = <420>;
 		battery,mix_high_chg_temp = <500>;
 		battery,mix_high_temp_recovery = <390>;
+
+		battery,temp_table_LRP_NORMAL = <900 380 380 370 900 380 380 360 0 0 0 0>;
+		battery,temp_table_LRP_25W = <400 390 380 370 400 380 380 360 1700 3400 1100 2200>;
 
 		/* SEC_BATTERY_FULL_CONDITION_NOTIMEFULL | SEC_BATTERY_FULL_CONDITION_VCELL */
 		battery,full_condition_type = <9>;
@@ -334,9 +339,9 @@
 		battery,wireless_otg_input_current = <900>;
 
 		battery,ttf_hv_charge_current = <2600>;
-		battery,ttf_hv_wireless_charge_current = <1355>;
-		battery,ttf_wireless_charge_current = <815>;
-		battery,ttf_dc25_charge_current = <4000>;
+		battery,ttf_hv_wireless_charge_current = <1380>;
+		battery,ttf_wireless_charge_current = <850>;
+		battery,ttf_dc25_charge_current = <3900>;
 
 		battery,rp_current_rp1 = <500>;
 		battery,rp_current_rp2 = <1500>;
@@ -431,7 +436,7 @@
 		fuelgauge,capacity_max = <1000>;
 		fuelgauge,capacity_max_margin = <300>;
 		fuelgauge,capacity_min = <0>;
-		fuelgauge,capacity_calculation_type = <28>;
+		fuelgauge,capacity_calculation_type = <92>;
 		fuelgauge,repeated_fuelalert;
 		fuelgauge,using_temp_compensation;
 		fuelgauge,low_temp_limit = <100>;
@@ -447,23 +452,28 @@
 		fuelgauge,fg_reset_wa_data = <0x05AC  0x3200 0x016A 0x0040 0x293A>; /* fullcapnom(=capacity), dPacc, dQacc,  rcomp0, tempco */
 		fuelgauge,discharge_temp_threshold = <600>;
 		fuelgauge,discharge_volt_threshold = <4200>;
-		fuelgauge,ttf_capacity = <3500>;
+		fuelgauge,lost_soc_trig_soc = <1000>;
+		fuelgauge,lost_soc_trig_d_soc = <20>;
+		fuelgauge,lost_soc_trig_scale = <2>;
+		fuelgauge,lost_soc_guarantee_soc = <30>;
+		fuelgauge,lost_soc_min_vol = <3200>;
+		fuelgauge,ttf_capacity = <3650>;
 		fuelgauge,cv_data = <
-			3228	864	1534
-			3067	872	1493
-			2896	881	1442
-			2695	892	1380
-			2492	902	1293
-			2263	910	1205
-			2103	920	1108
-			1911	930	1000
-			1722	942	871
-			1532	950	763
-			1338	960	685
-			1213	969	486
-			1073	980	307
-			932		990	115
-			571	1000	0
+			3228 	864 1334 
+			3067 	872 1293 
+			2896 	881 1242 
+			2695 	892 1180 
+			2492 	902 1093 
+			2263	910 1005 
+			2103	920 908 
+			1911 	930 800 
+			1722 	942 671 
+			1532 	950 563 
+			1338 	960 485 
+			1213 	969 286 
+			1073 	980 107 
+			932 	990 85 
+			571 	1000 0
 			>;
 	};
 
