@@ -28,6 +28,9 @@
 		status = "ok";
 		sx9360-i2c@28 {
 			sx9360,proxthresh_mcc = <0x22>; /* threshhold : 578 */
+			sx9360,avgfilt_reg = <0xa>;
+			sx9360,hyst_reg = <0x15>;
+			sx9360,proxthresh_reg = <0x16>;
 		};
 	};
 };
