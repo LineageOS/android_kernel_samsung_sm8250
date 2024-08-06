@@ -389,6 +389,26 @@
 			};
 		};
 
+		msm_cam_smmu_custom {
+			compatible = "qcom,msm-cam-smmu-cb";
+			iommus = <&apps_smmu 0x8A0 0x400>,
+				<&apps_smmu 0x8A1 0x400>,
+				<&apps_smmu 0xCA0 0x400>,
+				<&apps_smmu 0xCA1 0x400>;
+			qcom,iommu-dma-addr-pool = <0x7400000 0xd8c00000>;
+			label = "custom";
+			custom_iova_mem_map: iova-mem-map {
+				/* IO region is approximately 3.4 GB */
+				iova-mem-region-io {
+					iova-region-name = "io";
+					iova-region-start = <0x7400000>;
+					iova-region-len = <0xd8c00000>;
+					iova-region-id = <0x3>;
+					status = "ok";
+				};
+			};
+		};
+
 		msm_cam_smmu_jpeg {
 			compatible = "qcom,msm-cam-smmu-cb";
 			iommus = <&apps_smmu 0x2040 0x400>,
@@ -430,8 +450,7 @@
 				<&apps_smmu 0x2420 0x400>,
 				<&apps_smmu 0x2421 0x400>;
 			label = "icp";
-			qcom,iommu-dma-addr-pool = <0x10c00000 0xee300000>;
-			iova-region-discard = <0xdff00000 0x300000>;
+			qcom,iommu-dma-addr-pool = <0x10c00000 0xcf300000>;
 			icp_iova_mem_map: iova-mem-map {
 				iova-mem-region-firmware {
 					/* Firmware region is 5MB */
@@ -461,12 +480,11 @@
 				};
 
 				iova-mem-region-io {
-					/* IO region is approximately 3.7 GB */
+					/* IO region is approximately 3.3 GB */
 					iova-region-name = "io";
 					iova-region-start = <0x10c00000>;
-					iova-region-len = <0xee300000>;
+					iova-region-len = <0xcf300000>;
 					iova-region-id = <0x3>;
-					iova-region-discard = <0xdff00000 0x300000>;
 					status = "ok";
 				};
 
@@ -615,7 +633,7 @@
 			"csid4", "csid5", "csid6", "ife0", "ife1",
 			"ife2", "ife3", "ife4", "ife5", "ife6",
 			"custom0", "ipe0", "cam-cdm-intf0", "cpas-cdm0",
-			"bps0", "icp0", "jpeg-dma0", "jpeg-enc0", "fd0";
+			"bps0", "icp0", "jpeg-dma0", "jpeg-enc0", "fd0", "csid-custom0";
 
 		camera-bus-nodes {
 			level3-nodes {
@@ -1192,6 +1210,14 @@
 		status = "ok";
 	};
 
+	cam_ven,cam-sbi {
+		compatible = "qcom,sbi";
+		compat-hw-name = "cam_ven,cam-sbi";
+		arch-compat = "sbi";
+		num-sbi = <1>;
+		status = "ok";
+	};
+
 	qcom,cpas-cdm1@acb4200 {
 		cell-index = <1>;
 		compatible = "qcom,cam480-cpas-cdm1";
@@ -1240,6 +1266,46 @@
 		status = "ok";
 	};
 
+	cam_csid_custom: qcom,csid_custom@aceb200 {
+		cell-index = <0>;
+		compatible = "qcom,csid-custom480";
+		reg-names = "csid_custom";
+		reg = <0xaceb200 0x1000>;
+		reg-cam-base = <0xeb200>;
+		interrupt-names = "csid_custom";
+		interrupts = <GIC_SPI 454 IRQ_TYPE_EDGE_RISING>;
+		regulator-names = "camss", "sbi";
+		camss-supply = <&titan_top_gdsc>;
+		sbi-supply = <&sbi_gdsc>;
+		clock-names =
+			"sbi_csid_clk_src",
+			"sbi_csid_clk",
+			"cphy_rx_clk_src",
+			"sbi_cphy_rx_clk",
+			"sbi_clk_src",
+			"sbi_clk",
+			"sbi_axi_clk",
+			"sbi_ahb_clk";
+		clocks =
+			<&clock_camcc CAM_CC_SBI_CSID_CLK_SRC>,
+			<&clock_camcc CAM_CC_SBI_CSID_CLK>,
+			<&clock_camcc CAM_CC_CPHY_RX_CLK_SRC>,
+			<&clock_camcc CAM_CC_SBI_CPHY_RX_CLK>,
+			<&clock_camcc CAM_CC_IFE_0_CLK_SRC>,
+			<&clock_camcc CAM_CC_SBI_CLK>,
+			<&clock_camcc CAM_CC_SBI_AXI_CLK>,
+			<&clock_camcc CAM_CC_SBI_AHB_CLK>;
+		clock-rates =
+			<400000000 0 0 0 350000000 0 0 0>,
+			<400000000 0 0 0 475000000 0 0 0>,
+			<400000000 0 0 0 576000000 0 0 0>,
+			<400000000 0 0 0 720000000 0 0 0>;
+		clock-cntl-level = "lowsvs", "svs", "svs_l1", "turbo";
+		src-clock-name = "sbi_csid_clk_src";
+		clock-control-debugfs = "true";
+		status = "ok";
+	};
+
 	cam_csid0: qcom,csid0@acb5200 {
 		cell-index = <0>;
 		compatible = "qcom,csid480";
@@ -1279,6 +1345,55 @@
 		clock-cntl-level = "lowsvs", "svs", "svs_l1", "turbo";
 		src-clock-name = "ife_csid_clk_src";
 		clock-control-debugfs = "true";
+		status = "ok";
+	};
+
+	cam_sbi: qcom,sbi@acea000 {
+		cell-index = <0>;
+		compatible = "qcom,cam-sbi";
+		reg-names = "sbi","cam_camnoc";
+		reg = <0xacea000 0x1200>,
+			<0xac42000 0x8000>;
+		reg-cam-base = <0xea000 0x1200>;
+		interrupt-names = "sbi";
+		interrupts = <0 455 IRQ_TYPE_EDGE_RISING>;
+		regulator-names = "camss","sbi";
+		camss-supply = <&titan_top_gdsc>;
+		sbi-supply = <&sbi_gdsc>;
+		clock-names =
+			"sbi_clk_src",
+			"sbi_clk",
+			"sbi_ife_0_clk",
+			"slow_ahb_clk_src",
+			"sbi_ahb_clk",
+			"sbi_axi_clk";
+		clocks =
+			<&clock_camcc CAM_CC_IFE_0_CLK_SRC>,
+			<&clock_camcc CAM_CC_SBI_CLK>,
+			<&clock_camcc CAM_CC_SBI_IFE_0_CLK>,
+			<&clock_camcc CAM_CC_SLOW_AHB_CLK_SRC>,
+			<&clock_camcc CAM_CC_SBI_AHB_CLK>,
+			<&clock_camcc CAM_CC_SBI_AXI_CLK>;
+		clock-rates =
+			// <350000000 0 350000000 350000000 100000000 100000000 800000000 0>,
+			// <475000000 0 350000000 350000000 200000000 200000000 800000000 0>,
+			// <576000000 0 350000000 350000000 300000000 300000000 800000000 0>,
+			// <720000000 0 350000000 350000000 400000000 400000000 800000000 0>;
+			// <350000000 0 350000000 350000000 100000000 100000000 800000000 350000000>,
+			// <475000000 0 350000000 350000000 200000000 200000000 800000000 350000000>,
+			// <576000000 0 350000000 350000000 300000000 300000000 800000000 350000000>,
+			// <720000000 0 350000000 350000000 400000000 400000000 800000000 350000000>;
+			<350000000 0 0 800000000 0 0>,
+			<475000000 0 0 800000000 0 0>,
+			<576000000 0 0 800000000 0 0>,
+			<720000000 0 0 800000000 0 0>;
+
+		clock-cntl-level = "lowsvs", "svs", "svs_l1", "turbo";
+		src-clock-name = "sbi_clk_src";
+		clock-names-option = "sbi_ife_1_clk";
+		clocks-option = <&clock_camcc CAM_CC_SBI_IFE_1_CLK>; 
+		clock-rates-option = <0>;
+		clock-control-debugfs="true";
 		status = "ok";
 	};
 
@@ -1362,6 +1477,36 @@
 		src-clock-name = "ife_csid_clk_src";
 		clock-control-debugfs = "true";
 		status = "ok";
+	};
+
+	cam_csid2: qcom,csid2@aceb200 {
+		cell-index=<7>;
+		compatible="qcom,cam-csid480";
+		reg-names="csid";
+		reg=<0xaceb200 0x1000>;
+		reg-cam-base=<0xeb200>;
+		interrupt-names="csid";
+		interrupts=<0 454 IRQ_TYPE_EDGE_RISING>;
+		regulator-names="camss","sbi";
+		camss-supply=<&titan_top_gdsc>;
+		sbi-supply=<&sbi_gdsc>;
+		clock-names=
+			"sbi_csid_clk_src",
+			"sbi_csid_clk",
+			"cphy_rx_clk_src",
+			"sbi_cphy_rx_clk",
+			"sbi_clk_src",
+			"sbi_clk",
+			"sbi_axi_clk";
+		clock-rates=
+			<400000000 0 0 0 350000000 0 0>,
+			<400000000 0 0 0 475000000 0 0>,
+			<400000000 0 0 0 576000000 0 0>,
+			<400000000 0 0 0 720000000 0 0>;
+		clock-cntl-level = "lowsvs","svs","svs_11","turbo";
+		src-lock-name="sbi_csid_clk_src";
+		clock_control-debugfs="true";
+		status="ok";
 	};
 
 	cam_vfe1: qcom,ife1@acc3000 {
