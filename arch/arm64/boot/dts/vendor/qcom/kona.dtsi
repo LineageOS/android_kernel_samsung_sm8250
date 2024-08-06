@@ -45,7 +45,7 @@
 		mboxes = <&qmp_aop 0>;
 	};
 
-	aliases {
+	aliases: aliases {
 		ufshc1 = &ufshc_mem; /* Embedded UFS slot */
 		sdhc2 = &sdhc_2; /* SDC2 SD card slot */
 		pci-domain0 = &pcie0; /* PCIe0 domain */
@@ -350,18 +350,18 @@
 	};
 
 	chosen {
-		bootargs = "rcupdate.rcu_expedited=1 rcu_nocbs=0-7 kpti=off";
+		bootargs = "rcupdate.rcu_expedited=1 rcu_nocbs=0-7 kpti=off cgroup.memory=nokmem";
 	};
 
 	firmware: firmware {
 		android {
 			compatible = "android,firmware";
-			vbmeta {
+			shared_meta: vbmeta {
 				compatible = "android,vbmeta";
 				parts = "vbmeta,boot,system,vendor,dtbo";
 			};
 
-			fstab {
+			android_q_fstab: fstab {
 				compatible = "android,fstab";
 				vendor {
 					compatible = "android,vendor";
@@ -387,7 +387,7 @@
 
 		xbl_aop_mem: xbl_aop_region@80700000 {
 			no-map;
-			reg = <0x0 0x80700000 0x0 0x160000>;
+			reg = <0x0 0x80603000 0x0 0x25D000>;
 		};
 
 		cmd_db: reserved-memory@80860000 {
@@ -572,7 +572,7 @@
 			alloc-ranges = <0x0 0x00000000 0x0 0xffffffff>;
 			reusable;
 			alignment = <0x0 0x400000>;
-			size = <0x0 0xA400000>;
+			size = <0x0 0xD800000>;
 		};
 
 		cnss_wlan_mem: cnss_wlan_region {
@@ -580,7 +580,7 @@
 			alloc-ranges = <0x0 0x00000000 0x0 0xffffffff>;
 			reusable;
 			alignment = <0x0 0x400000>;
-			size = <0x0 0x1400000>;
+			size = <0x0 0x1C00000>;
 		};
 
 		/* global autoconfigured region for contiguous allocations */
@@ -640,9 +640,9 @@
 		/* Slimbus Slave DT for QCA6390 */
 		btfmslim_codec: qca6390 {
 			compatible = "qcom,btfmslim_slave";
-			elemental-addr = [00 01 20 02 17 02];
+			elemental-addr = [00 01 21 02 17 02];
 			qcom,btfm-slim-ifd = "btfmslim_slave_ifd";
-			qcom,btfm-slim-ifd-elemental-addr = [00 00 20 02 17 02];
+			qcom,btfm-slim-ifd-elemental-addr = [00 00 21 02 17 02];
 		};
 	};
 
@@ -664,13 +664,6 @@
 		0x18020058 0x18030058>;
 		qcom,config-arr = <0x18000060 0x18010060
 		0x18020060 0x18030060>;
-	};
-
-	dsu_pmu@0 {
-		compatible = "arm,dsu-pmu";
-		interrupts = <GIC_SPI 50 IRQ_TYPE_LEVEL_HIGH>;
-		cpus = <&CPU0>, <&CPU1>, <&CPU2>, <&CPU3>,
-			<&CPU4>, <&CPU5>, <&CPU6>, <&CPU7>;
 	};
 
 	qcom,chd_gold {
@@ -1358,7 +1351,7 @@
 		operating-points-v2 = <&keepalive_opp_table>;
 	};
 
-	qcom,msm-imem@146bf000 {
+	msm_imem: qcom,msm-imem@146bf000 {
 		compatible = "qcom,msm-imem";
 		reg = <0x146bf000 0x1000>;
 		ranges = <0x0 0x146bf000 0x1000>;
@@ -3055,6 +3048,7 @@
 			"ref_aux_clk";
 		clocks = <&clock_rpmh RPMH_CXO_CLK>,
 			<&clock_gcc GCC_UFS_PHY_PHY_AUX_CLK>;
+		vdda-phy-always-on;
 
 		status = "disabled";
 	};
@@ -3992,6 +3986,7 @@
 		qcom,fastrpc-adsp-audio-pdr;
 		qcom,fastrpc-adsp-sensors-pdr;
 		qcom,rpc-latency-us = <235>;
+		qcom,secure-domains = <0x0F>;
 		qcom,qos-cores = <0 1 2 3>;
 
 		qcom,msm_fastrpc_compute_cb1 {
@@ -4384,101 +4379,121 @@
 		l1_itlb400 {
 			qcom,dump-size = <0x300>;
 			qcom,dump-id = <0x24>;
+			qcom,dump-align = <0x1000>;
 		};
 
 		l1_itlb500 {
 			qcom,dump-size = <0x300>;
 			qcom,dump-id = <0x25>;
+			qcom,dump-align = <0x1000>;
 		};
 
 		l1_itlb600 {
 			qcom,dump-size = <0x300>;
 			qcom,dump-id = <0x26>;
+			qcom,dump-align = <0x1000>;
 		};
 
 		l1_itlb700 {
 			qcom,dump-size = <0x300>;
 			qcom,dump-id = <0x27>;
+			qcom,dump-align = <0x1000>;
 		};
 
 		l1_dtlb400 {
 			qcom,dump-size = <0x480>;
 			qcom,dump-id = <0x44>;
+			qcom,dump-align = <0x1000>;
 		};
 
 		l1_dtlb500 {
 			qcom,dump-size = <0x480>;
 			qcom,dump-id = <0x45>;
+			qcom,dump-align = <0x1000>;
 		};
 
 		l1_dtlb600 {
 			qcom,dump-size = <0x480>;
 			qcom,dump-id = <0x46>;
+			qcom,dump-align = <0x1000>;
 		};
 
 		l1_dtlb700 {
 			qcom,dump-size = <0x480>;
 			qcom,dump-id = <0x47>;
+			qcom,dump-align = <0x1000>;
 		};
 
 		l2_cache400 {
 			qcom,dump-size = <0x68000>;
 			qcom,dump-id = <0xc4>;
+			qcom,dump-align = <0x1000>;
 		};
 
 		l2_cache500 {
 			qcom,dump-size = <0x68000>;
 			qcom,dump-id = <0xc5>;
+			qcom,dump-align = <0x1000>;
 		};
 
 		l2_cache600 {
 			qcom,dump-size = <0x68000>;
 			qcom,dump-id = <0xc6>;
+			qcom,dump-align = <0x1000>;
 		};
 
 		l2_cache700 {
 			qcom,dump-size = <0xD0000>;
 			qcom,dump-id = <0xc7>;
+			qcom,dump-align = <0x1000>;
 		};
 
 		l2_tlb0 {
 			qcom,dump-size = <0x6000>;
 			qcom,dump-id = <0x120>;
+			qcom,dump-align = <0x1000>;
 		};
 
 		l2_tlb100 {
 			qcom,dump-size = <0x6000>;
 			qcom,dump-id = <0x121>;
+			qcom,dump-align = <0x1000>;
 		};
 
 		l2_tlb200 {
 			qcom,dump-size = <0x6000>;
 			qcom,dump-id = <0x122>;
+			qcom,dump-align = <0x1000>;
 		};
 
 		l2_tlb300 {
 			qcom,dump-size = <0x6000>;
 			qcom,dump-id = <0x123>;
+			qcom,dump-align = <0x1000>;
 		};
 
 		l2_tlb400 {
 			qcom,dump-size = <0x7800>;
 			qcom,dump-id = <0x124>;
+			qcom,dump-align = <0x1000>;
 		};
 
 		l2_tlb500 {
 			qcom,dump-size = <0x7800>;
 			qcom,dump-id = <0x125>;
+			qcom,dump-align = <0x1000>;
 		};
 
 		l2_tlb600 {
 			qcom,dump-size = <0x7800>;
 			qcom,dump-id = <0x126>;
+			qcom,dump-align = <0x1000>;
 		};
 
 		l2_tlb700 {
 			qcom,dump-size = <0x7800>;
 			qcom,dump-id = <0x127>;
+			qcom,dump-align = <0x1000>;
 		};
 
 		gemnoc {
@@ -4748,8 +4763,8 @@
 		status = "ok";
 	};
 
-	wlan: qcom,cnss-qca6390@b0000000 {
-		compatible = "qcom,cnss-qca6390";
+	wlan: qcom,cnss-qca6490@b0000000 {
+		compatible = "qcom,cnss-qca6490";
 		reg = <0xb0000000 0x10000>,
 		      <0xb2e5510 0x5c0>;
 		reg-names = "smmu_iova_ipa", "tcs_cmd";
@@ -4794,7 +4809,7 @@
 		vdd-wlan-io-supply = <&pm8150_s4>;
 		qcom,vdd-wlan-io-config = <1800000 1800000 0 0 1>;
 		vdd-wlan-rfa1-supply = <&pm8150_s5>;
-		qcom,vdd-wlan-rfa1-config = <1900000 1900000 0 0 1>;
+		qcom,vdd-wlan-rfa1-config = <2040000 2040000 0 0 1>;
 		vdd-wlan-rfa2-supply = <&pm8150a_s8>;
 		qcom,vdd-wlan-rfa2-config = <1350000 1350000 0 0 1>;
 		wlan-ant-switch-supply = <&pm8150a_l5>;
@@ -4884,7 +4899,7 @@
 				mhi,num-elements = <32>;
 				mhi,intmod = <0>;
 				mhi,msi = <1>;
-				mhi,priority = <1>;
+				mhi,priority = <0>;
 				mhi,brstmode = <2>;
 				mhi,data-type = <1>;
 			};
@@ -4893,7 +4908,7 @@
 				mhi,num-elements = <256>;
 				mhi,intmod = <0>;
 				mhi,msi = <2>;
-				mhi,priority = <1>;
+				mhi,priority = <0>;
 				mhi,brstmode = <2>;
 			};
 

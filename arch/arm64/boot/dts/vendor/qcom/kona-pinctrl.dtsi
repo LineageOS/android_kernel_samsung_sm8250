@@ -509,7 +509,7 @@
 
 			config {
 				pins = "gpio77";
-				bias-pull-up;           /* pull up */
+				bias-disable;           /* NO pull */
 				drive-strength = <2>;   /* 2 MA */
 			};
 		};
@@ -518,7 +518,7 @@
 			config {
 				pins = "sdc2_clk";
 				bias-disable;		/* NO pull */
-				drive-strength = <16>;	/* 16 MA */
+				drive-strength = <12>;	/* 12 MA */
 			};
 		};
 
@@ -534,7 +534,7 @@
 			config {
 				pins = "sdc2_clk";
 				bias-disable;		/* NO pull */
-				drive-strength = <16>;	/* 16 MA */
+				drive-strength = <12>;	/* 12 MA */
 			};
 		};
 
@@ -542,7 +542,7 @@
 			config {
 				pins = "sdc2_clk";
 				bias-disable;		/* NO pull */
-				drive-strength = <16>;	/* 16 MA */
+				drive-strength = <12>;	/* 12 MA */
 			};
 		};
 
@@ -550,7 +550,7 @@
 			config {
 				pins = "sdc2_clk";
 				bias-disable;		/* NO pull */
-				drive-strength = <16>;	/* 16 MA */
+				drive-strength = <12>;	/* 12 MA */
 			};
 		};
 
@@ -558,7 +558,7 @@
 			config {
 				pins = "sdc2_clk";
 				bias-disable;		/* NO pull */
-				drive-strength = <16>;	/* 16 MA */
+				drive-strength = <12>;	/* 12 MA */
 			};
 		};
 
@@ -566,7 +566,7 @@
 			config {
 				pins = "sdc2_cmd";
 				bias-pull-up;		/* pull up */
-				drive-strength = <16>;	/* 16 MA */
+				drive-strength = <8>;	/* 8 MA */
 			};
 		};
 
@@ -582,7 +582,7 @@
 			config {
 				pins = "sdc2_cmd";
 				bias-pull-up;		/* pull up */
-				drive-strength = <16>;	/* 16 MA */
+				drive-strength = <8>;	/* 8 MA */
 			};
 		};
 
@@ -590,7 +590,7 @@
 			config {
 				pins = "sdc2_cmd";
 				bias-pull-up;		/* pull up */
-				drive-strength = <16>;	/* 16 MA */
+				drive-strength = <8>;	/* 8 MA */
 			};
 		};
 
@@ -598,7 +598,7 @@
 			config {
 				pins = "sdc2_cmd";
 				bias-pull-up;		/* pull up */
-				drive-strength = <16>;	/* 16 MA */
+				drive-strength = <8>;	/* 8 MA */
 			};
 		};
 
@@ -606,7 +606,7 @@
 			config {
 				pins = "sdc2_cmd";
 				bias-pull-up;		/* pull up */
-				drive-strength = <16>;	/* 16 MA */
+				drive-strength = <8>;	/* 8 MA */
 			};
 		};
 
@@ -614,7 +614,7 @@
 			config {
 				pins = "sdc2_data";
 				bias-pull-up;		/* pull up */
-				drive-strength = <16>;	/* 16 MA */
+				drive-strength = <8>;	/* 8 MA */
 			};
 		};
 
@@ -630,7 +630,7 @@
 			config {
 				pins = "sdc2_data";
 				bias-pull-up;		/* pull up */
-				drive-strength = <16>;	/* 16 MA */
+				drive-strength = <8>;	/* 8 MA */
 			};
 		};
 
@@ -638,7 +638,7 @@
 			config {
 				pins = "sdc2_data";
 				bias-pull-up;		/* pull up */
-				drive-strength = <16>;	/* 16 MA */
+				drive-strength = <8>;	/* 8 MA */
 			};
 		};
 
@@ -646,7 +646,7 @@
 			config {
 				pins = "sdc2_data";
 				bias-pull-up;		/* pull up */
-				drive-strength = <16>;	/* 16 MA */
+				drive-strength = <8>;	/* 8 MA */
 			};
 		};
 
@@ -654,7 +654,7 @@
 			config {
 				pins = "sdc2_data";
 				bias-pull-up;		/* pull up */
-				drive-strength = <16>;	/* 16 MA */
+				drive-strength = <8>;	/* 8 MA */
 			};
 		};
 
