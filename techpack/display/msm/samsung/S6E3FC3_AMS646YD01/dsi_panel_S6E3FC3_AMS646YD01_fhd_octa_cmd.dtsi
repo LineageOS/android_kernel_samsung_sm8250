@@ -323,29 +323,38 @@
 		samsung,fod-dim-lut = <
                 /* brightness, alpha */
                 	    0     0xFF
-                	    1     0xEC
-                	    2     0xE6
-                	    3     0xE0
-                	    4     0xDC
-                	    6     0xD5
-                	    10     0xCA
-                	    20     0xB7
-                	    21     0xB5
-                	    30     0xA8
-                	    42     0x9A
-                	    63     0x85
-                	    84     0x74
-                	    105     0x65
-                	    126     0x58
-                	    147     0x4C
-                	    168     0x40
-                	    189     0x36
-                	    210     0x2C
-                	    231     0x23
-                	    252     0x1A
-                	    273     0x11
-                	    294     0x9
-                	    315     0x1
+                	    1     0xE8
+                	    11     0xD5
+                	    21     0xC8
+                	    31     0xB9
+                	    42     0xAF
+                	    52     0xA3
+                	    62     0x96
+                	    73     0x8C
+                	    83     0x85
+                	    93     0x7D
+                	    104     0x75
+                	    114     0x6B
+                	    124     0x64
+                	    135     0x5F
+                	    145     0x55
+                	    155     0x4B
+                	    166     0x44
+                	    176     0x3F
+                	    186     0x3B
+                	    197     0x35
+                	    207     0x31
+                	    217     0x2C
+                	    228     0x27
+                	    238     0x22
+                	    248     0x1E
+                	    258     0x1B
+                	    269     0x16
+                	    279     0x13
+                	    289     0xF
+                	    300     0xB
+                	    310     0x6
+                	    320     0x1
 		>;
 
 		samsung,candela_map_table_revA = < /* THIS TABLE USED FOR DIMMING */
