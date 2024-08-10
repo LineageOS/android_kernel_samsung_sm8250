@@ -416,13 +416,7 @@
                 	    228     0x27
                 	    238     0x22
                 	    248     0x1E
-                	    258     0x1B
-                	    269     0x16
-                	    279     0x13
-                	    289     0xF
-                	    300     0xB
-                	    310     0x6
-                	    320     0x1
+                	    256     0x00
 		>;
 
 		//samsung,gamma_mode2_candela_map_table_revA = < /* THIS TABLE USED FOR DIMMING */
