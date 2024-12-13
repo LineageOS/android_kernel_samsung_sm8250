@@ -222,8 +222,10 @@ int get_hall_angle_data(int32_t *raw_data);
 	defined(CONFIG_SUPPORT_BRIGHT_SYSFS_COMPENSATION_LUX)
 int get_light_sidx(struct adsp_data *data);
 #endif
-#ifdef CONFIG_SUPPORT_BRIGHTNESS_NOTIFY_FOR_LIGHT_SENSOR
+#if defined(CONFIG_SUPPORT_BRIGHTNESS_NOTIFY_FOR_LIGHT_SENSOR) || defined(CONFIG_SUPPORT_DISPLAY_NOTIFY_FOR_LIGHT_SENSOR)
 struct adsp_data* adsp_get_struct_data(void);
+#endif
+#ifdef CONFIG_SUPPORT_BRIGHTNESS_NOTIFY_FOR_LIGHT_SENSOR
 void light_brightness_work_func(struct work_struct *work);
 #endif
 #ifdef CONFIG_SUPPORT_LIGHT_DUALIZATION

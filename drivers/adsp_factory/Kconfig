@@ -220,6 +220,14 @@ config SUPPORT_PROX_POWER_ON_CAL
 	  Support power on calibration for proximity sensor
 	  make calibration process done as the device power up.
 
+config SUPPORT_DISPLAY_NOTIFY_FOR_LIGHT_SENSOR
+	tristate "Sensors support display notify"
+	depends on SUPPORT_UNDER_PANEL_WITH_LIGHT_SENSOR
+	default y
+	help
+	  Support display notify for light sensor.
+	  Receive display state from lcd driver to apply lux compensation.
+
 config SUPPORT_BRIGHTNESS_NOTIFY_FOR_LIGHT_SENSOR
 	tristate "Sensors support brightness notify"
 	default n

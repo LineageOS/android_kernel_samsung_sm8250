@@ -76,7 +76,7 @@ struct adsp_data *data;
 
 DEFINE_MUTEX(factory_mutex);
 
-#ifdef CONFIG_SUPPORT_BRIGHTNESS_NOTIFY_FOR_LIGHT_SENSOR
+#if defined(CONFIG_SUPPORT_BRIGHTNESS_NOTIFY_FOR_LIGHT_SENSOR) || defined(CONFIG_SUPPORT_DISPLAY_NOTIFY_FOR_LIGHT_SENSOR)
 struct adsp_data* adsp_get_struct_data(void)
 {
 	return data;

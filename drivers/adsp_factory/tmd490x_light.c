@@ -37,7 +37,7 @@ enum {
 	OPTION_TYPE_MAX
 };
 
-#ifdef CONFIG_SUPPORT_BRIGHTNESS_NOTIFY_FOR_LIGHT_SENSOR
+#if defined(CONFIG_SUPPORT_BRIGHTNESS_NOTIFY_FOR_LIGHT_SENSOR) || defined(CONFIG_SUPPORT_DISPLAY_NOTIFY_FOR_LIGHT_SENSOR)
 #include "../../../techpack/display/msm/samsung/ss_panel_notify.h"
 #endif
 #ifdef CONFIG_SUPPORT_AMS_LIGHT_LCD_VERSION_DUALIZAION
@@ -227,6 +227,82 @@ static ssize_t light_register_write_store(struct device *dev,
 
 	return size;
 }
+
+#ifdef CONFIG_SUPPORT_DISPLAY_NOTIFY_FOR_LIGHT_SENSOR
+static int light_panel_state_notify(struct notifier_block *nb,
+	unsigned long val, void *panel_data)
+{
+	struct panel_state_data *evdata = (struct panel_state_data *)panel_data;
+	struct adsp_data *data;
+	unsigned int panel_state;
+	int32_t msg_buf[2];
+	int new_value;
+	uint16_t light_idx;
+
+	if (val != PANEL_EVENT_STATE_CHANGED)
+		return 0;
+
+	data = adsp_get_struct_data();
+	
+	if (!data) {
+		pr_err("[FACTORY] %s: adsp_data İS NULL\n", __func__);
+		return -ENODATA;
+	}
+
+	light_idx = get_light_sidx(data);
+
+	if(evdata)
+		panel_state = evdata->state;
+	else
+		return 0;
+
+	switch (panel_state) {
+	case PANEL_ON:
+		new_value = 1;
+		break;
+	case PANEL_OFF:
+	case PANEL_LPM:
+		new_value = 0;
+		break;
+	default:
+		goto out;
+		break;
+    }
+
+	pr_err("[FACTORY] %s: new_value %d\n", __func__, new_value);
+	msg_buf[0] = OPTION_TYPE_LCD_ONOFF;
+	msg_buf[1] = new_value;
+
+#if defined(CONFIG_SEC_C1Q_PROJECT) || defined(CONFIG_SEC_C2Q_PROJECT)
+	if (new_value == 1) {
+		schedule_delayed_work(&data->light_copr_debug_work,
+			msecs_to_jiffies(1000));
+		data->light_copr_debug_count = 0;
+	} else {
+		cancel_delayed_work_sync(&data->light_copr_debug_work);
+	}
+#endif
+
+	mutex_lock(&data->light_factory_mutex);
+	adsp_unicast(msg_buf, sizeof(msg_buf),
+		light_idx, 0, MSG_TYPE_OPTION_DEFINE);
+	adsp_unicast(msg_buf, sizeof(msg_buf),
+		MSG_SSC_CORE, 0, MSG_TYPE_OPTION_DEFINE);
+#ifdef CONFIG_SUPPORT_DUAL_DDI_COPR_FOR_LIGHT_SENSOR
+	adsp_unicast(msg_buf, sizeof(msg_buf),
+		MSG_DDI, 0, MSG_TYPE_OPTION_DEFINE);
+#endif
+	mutex_unlock(&data->light_factory_mutex);
+
+out:
+	return NOTIFY_OK;
+}
+
+static struct notifier_block light_panel_state_notifier = {
+	.notifier_call = light_panel_state_notify,
+	.priority = 1,
+};
+#endif
 
 #ifdef CONFIG_SUPPORT_BRIGHTNESS_NOTIFY_FOR_LIGHT_SENSOR
 void light_brightness_work_func(struct work_struct *work)
@@ -1246,6 +1322,9 @@ static int __init tmd490x_light_factory_init(void)
 #ifdef CONFIG_SUPPORT_BRIGHTNESS_NOTIFY_FOR_LIGHT_SENSOR
 	ss_panel_notifier_register(&light_panel_data_notifier);
 #endif
+#ifdef CONFIG_SUPPORT_DISPLAY_NOTIFY_FOR_LIGHT_SENSOR
+	ss_panel_notifier_register(&light_panel_state_notifier);
+#endif
 	pr_info("[FACTORY] %s\n", __func__);
 
 	return 0;
@@ -1256,6 +1335,9 @@ static void __exit tmd490x_light_factory_exit(void)
 	adsp_factory_unregister(MSG_LIGHT);
 #ifdef CONFIG_SUPPORT_BRIGHTNESS_NOTIFY_FOR_LIGHT_SENSOR
 	ss_panel_notifier_unregister(&light_panel_data_notifier);
+#endif
+#ifdef CONFIG_SUPPORT_DISPLAY_NOTIFY_FOR_LIGHT_SENSOR
+	ss_panel_notifier_unregister(&light_panel_state_notifier);
 #endif
 	pr_info("[FACTORY] %s\n", __func__);
 }
