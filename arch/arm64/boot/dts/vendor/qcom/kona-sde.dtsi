@@ -73,6 +73,7 @@
 		qcom,sde-wb-xin-id = <6>;
 		qcom,sde-wb-id = <2>;
 		qcom,sde-wb-clk-ctrl = <0x2bc 16>;
+		qcom,sde-wb-clk-status = <0x3bc 20>;
 
 		qcom,sde-intf-off = <0x6b000 0x6b800
 					0x6c000 0x6c800>;
@@ -96,6 +97,7 @@
 		qcom,sde-dsc-off = <0x81000 0x81400 0x81800 0x81c00>;
 		qcom,sde-dsc-size = <0x140>;
 		qcom,sde-dsc-pair-mask = <2 1 4 3>;
+		qcom,sde-dsc-linewidth = <2048>;
 
 		qcom,sde-dither-off = <0x30e0 0x30e0 0x30e0
 							0x30e0 0x30e0 0x30e0>;
@@ -166,6 +168,9 @@
 		qcom,sde-min-dram-ib-kbps = <800000>;
 		qcom,sde-dram-channels = <2>;
 		qcom,sde-num-nrt-paths = <0>;
+		qcom,sde-dspp-ltm-version = <0x00010000>;
+		/* offsets are based off dspp 0 and dspp 1 */
+		qcom,sde-dspp-ltm-off = <0x2a000 0x28100>;
 
 		qcom,sde-uidle-off = <0x80000>;
 		qcom,sde-uidle-size = <0x70>;
@@ -303,7 +308,6 @@
 				<1 590 0 150000>,
 				<1 590 0 300000>;
 		};
-
 		qcom,sde-limits {
 			qcom,sde-linewidth-limits {
 				qcom,sde-limit-name = "sspp_linewidth_usecases";
@@ -574,10 +578,8 @@
 		cell-index = <0>;
 		frame-threshold-time-us = <800>;
 		reg = <0xae94000 0x400>,
-			<0xaf08000 0x4>,
-			<0xae6b800 0x300>;
-		reg-names = "dsi_ctrl", "disp_cc_base",
-				"mmss_misc";
+			<0xaf08000 0x4>;
+		reg-names = "dsi_ctrl", "disp_cc_base";
 		interrupt-parent = <&mdss_mdp>;
 		interrupts = <4 0>;
 		vdda-1p2-supply = <&pm8150_l9>;
@@ -626,10 +628,8 @@
 		cell-index = <1>;
 		frame-threshold-time-us = <800>;
 		reg = <0xae96000 0x400>,
-			<0xaf08000 0x4>,
-			<0xae6c000 0x300>;
-		reg-names = "dsi_ctrl", "disp_cc_base",
-				"mmss_misc";
+			<0xaf08000 0x4>;
+		reg-names = "dsi_ctrl", "disp_cc_base";
 		interrupt-parent = <&mdss_mdp>;
 		interrupts = <5 0>;
 		vdda-1p2-supply = <&pm8150_l9>;

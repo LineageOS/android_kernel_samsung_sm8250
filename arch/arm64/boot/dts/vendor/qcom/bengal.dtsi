@@ -409,11 +409,6 @@
 			label = "cont_splash_region";
 		};
 
-		disp_rdump_memory: disp_rdump_region@5c000000 {
-			reg = <0x0 0x5c000000 0x0 0x00f00000>;
-			label = "disp_rdump_region";
-		};
-
 		dfps_data_memory: dfps_data_region@5cf00000 {
 			reg = <0x0 0x5cf00000 0x0 0x0100000>;
 			label = "dfps_data_region";
@@ -446,7 +441,7 @@
 	};
 
 	chosen {
-		bootargs = "rcupdate.rcu_expedited=1 rcu_nocbs=0-7";
+		bootargs = "rcupdate.rcu_expedited=1 rcu_nocbs=0-7 kpti=off";
 	};
 
 	soc: soc { };
@@ -479,6 +474,7 @@
 		clock-names = "core_clk";
 
 		qcom,coresight-jtagmm-cpu = <&CPU0>;
+		status = "disabled";
 	};
 
 	jtag_mm1: jtagmm@9140000 {
@@ -490,6 +486,7 @@
 		clock-names = "core_clk";
 
 		qcom,coresight-jtagmm-cpu = <&CPU1>;
+		status = "disabled";
 	};
 
 	jtag_mm2: jtagmm@9240000 {
@@ -501,6 +498,7 @@
 		clock-names = "core_clk";
 
 		qcom,coresight-jtagmm-cpu = <&CPU2>;
+		status = "disabled";
 	};
 
 	jtag_mm3: jtagmm@9340000 {
@@ -512,6 +510,7 @@
 		clock-names = "core_clk";
 
 		qcom,coresight-jtagmm-cpu = <&CPU3>;
+		status = "disabled";
 	};
 
 	jtag_mm4: jtagmm@9440000 {
@@ -523,6 +522,7 @@
 		clock-names = "core_clk";
 
 		qcom,coresight-jtagmm-cpu = <&CPU4>;
+		status = "disabled";
 	};
 
 	jtag_mm5: jtagmm@9540000 {
@@ -534,6 +534,7 @@
 		clock-names = "core_clk";
 
 		qcom,coresight-jtagmm-cpu = <&CPU5>;
+		status = "disabled";
 	};
 
 	jtag_mm6: jtagmm@9640000 {
@@ -545,6 +546,7 @@
 		clock-names = "core_clk";
 
 		qcom,coresight-jtagmm-cpu = <&CPU6>;
+		status = "disabled";
 	};
 
 	jtag_mm7: jtagmm@9740000 {
@@ -556,6 +558,7 @@
 		clock-names = "core_clk";
 
 		qcom,coresight-jtagmm-cpu = <&CPU7>;
+		status = "disabled";
 	};
 
 	qcom,memshare {
@@ -630,6 +633,7 @@
 
 	bluetooth: bt_wcn3990 {
 		compatible = "qca,wcn3990";
+		qca,bt-sw-ctrl-gpio = <&tlmm 87 0>; /* SW_CTRL */
 		qca,bt-vdd-io-supply =   <&L9A>;  /* IO */
 		qca,bt-vdd-core-supply = <&L17A>; /* RFA */
 		qca,bt-vdd-pa-supply =   <&L23A>; /* CH0 */
@@ -1317,7 +1321,7 @@
 		};
 
 		pmic {
-			qcom,dump-size = <0x10000>;
+			qcom,dump-size = <0x40000>;
 			qcom,dump-id = <0xe4>;
 		};
 
@@ -1604,10 +1608,11 @@
 	tsens0:tsens@c222000 {
 		compatible = "qcom,tsens24xx";
 		reg = <0x04410000  0x8>,
-		      <0x04411000  0x1ff>;
+			<0x04411000  0x1ff>;
 		reg-names = "tsens_srot_physical",
-			     "tsens_tm_physical";
-		interrupts = <0 275 0>, <0 190 0>;
+			"tsens_tm_physical";
+		interrupts = <GIC_SPI 275 IRQ_TYPE_LEVEL_HIGH>,
+				<GIC_SPI 190 IRQ_TYPE_LEVEL_HIGH>;
 		interrupt-names = "tsens-upper-lower", "tsens-critical";
 		tsens-reinit-wa;
 		#thermal-sensor-cells = <1>;
@@ -2545,7 +2550,8 @@
 		reg = <0x5800000 0x34000>,
 			<0x5804000 0x28000>;
 		reg-names = "ipa-base", "gsi-base";
-		interrupts = <0 257 0>, <0 259 0>;
+		interrupts = <GIC_SPI 257 IRQ_TYPE_LEVEL_HIGH>,
+				<GIC_SPI 259 IRQ_TYPE_LEVEL_HIGH>;
 		interrupt-names = "ipa-irq", "gsi-irq";
 		qcom,ipa-hw-ver = <16>; /* IPA core version = IPAv4.2 */
 		qcom,ipa-hw-mode = <0>;
@@ -2646,10 +2652,8 @@
 #include "bengal-gdsc.dtsi"
 #include "bengal-usb.dtsi"
 #include "bengal-ion.dtsi"
-#include "bengal-coresight.dtsi"
 #include "bengal-bus.dtsi"
 #include "bengal-vidc.dtsi"
-#include "pmi632.dtsi"
 #include "pm6125.dtsi"
 
 &gcc_camss_top_gdsc {
@@ -2880,59 +2884,6 @@
 
 	xo_therm {
 		reg = <ADC_XO_THERM_PU2>;
-		qcom,ratiometric;
-		qcom,hw-settle-time = <200>;
-	};
-};
-
-&pmi632_vadc {
-	#address-cells = <1>;
-	#size-cells = <0>;
-	pinctrl-names = "default";
-	pinctrl-0 = <&conn_therm_default &skin_therm_default>;
-
-	conn_therm {
-		reg = <ADC_GPIO1_PU2>;
-		label = "conn_therm";
-		qcom,ratiometric;
-		qcom,hw-settle-time = <200>;
-		qcom,pre-scaling = <1 1>;
-	};
-
-	skin_therm {
-		reg = <ADC_GPIO2_PU2>;
-		label = "skin_therm";
-		qcom,ratiometric;
-		qcom,hw-settle-time = <200>;
-		qcom,pre-scaling = <1 1>;
-	};
-};
-
-&pmi632_gpios {
-	conn_therm {
-		conn_therm_default: conn_therm_default {
-			pins = "gpio1";
-			bias-high-impedance;
-		};
-	};
-
-	skin_therm {
-		skin_therm_default: skin_therm_default {
-			pins = "gpio3";
-			bias-high-impedance;
-		};
-	};
-
-};
-
-&pmi632_adc_tm {
-	#address-cells = <1>;
-	#size-cells = <0>;
-	io-channels = <&pmi632_vadc ADC_GPIO2_PU2>;
-
-	/* Channel nodes */
-	skin_therm {
-		reg = <ADC_GPIO2_PU2>;
 		qcom,ratiometric;
 		qcom,hw-settle-time = <200>;
 	};

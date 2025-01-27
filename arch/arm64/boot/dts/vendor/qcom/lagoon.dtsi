@@ -325,7 +325,7 @@
 	};
 
 	chosen {
-		bootargs = "rcupdate.rcu_expedited=1 rcu_nocbs=0-7 earlycon=msm_geni_serial,0x98c000";
+		bootargs = "rcupdate.rcu_expedited=1 rcu_nocbs=0-7 earlycon=msm_geni_serial,0x98c000 kpti=off";
 	};
 
 	soc: soc { };
@@ -460,11 +460,6 @@
 			label = "cont_splash_region";
 		};
 
-		disp_rdump_memory: disp_rdump_region@0xa0000000 {
-			reg = <0x0 0xA0000000 0x0 0x02300000>;
-			label = "disp_rdump_region";
-		};
-
 		dfps_data_memory: dfps_data_region {
 			reg = <0x0 0xA2300000 0x0 0x0100000>;
 			label = "dfps_data_region";
@@ -536,6 +531,7 @@
 
 	bluetooth: bt_wcn3990 {
 		compatible = "qca,wcn3990";
+		qca,bt-sw-ctrl-gpio = <&tlmm 69 0>; /* SW_CTRL */
 		qca,bt-vdd-io-supply =   <&L11A>;  /* IO */
 		qca,bt-vdd-core-supply = <&L2E>; /* RFA */
 		qca,bt-vdd-pa-supply =   <&L10E>; /* CH0 */
