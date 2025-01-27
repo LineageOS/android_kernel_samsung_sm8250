@@ -173,6 +173,7 @@
 	compatible = "qcom,ufs-phy-qmp-v4";
 
 	vdda-phy-supply = <&pm8150_l5>;
+	vdda-phy-always-on;
 	vdda-pll-supply = <&pm8150_l9>;
 	vdda-phy-max-microamp = <89900>;
 	vdda-pll-max-microamp = <18800>;
@@ -702,6 +703,12 @@
 		wake-capable-sensor;
 		trips {
 			active-config0 {
+				temperature = <125000>;
+				hysteresis = <1000>;
+				type = "passive";
+			};
+
+			active-config1 {
 				temperature = <125000>;
 				hysteresis = <1000>;
 				type = "passive";

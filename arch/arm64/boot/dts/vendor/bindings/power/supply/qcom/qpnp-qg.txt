@@ -19,7 +19,7 @@ First Level Node - QGAUGE device
 - compatible
 	Usage:      required
 	Value type: <string>
-	Definition: Should be "qcom,qpnp-qg".
+	Definition: Should be "qcom,qpnp-qg" or "qcom,qpnp-qg-lite".
 
 - qcom,pmic-revid
 	Usage:      required
@@ -449,12 +449,11 @@ First Level Node - QGAUGE device
 		    when there is variation in system-SOC due to
 		    changes in the load.
 
+- qcom,use-cp-iin-sns
 	Usage:      optional
 	Value type: bool
-	Definition: Enable Battery SOC based SOC scaling. This logic
-		    allows monotonic-SOC scaling at low-temperatures
-		    when there is variation in system-SOC due to
-		    changes in the load.
+	Definition: Enable SMB-sensing for CP. Enabling this property
+		    will enable QG summing the SMB current.
 
 - qcom,esr-low-temp-threshold
 	Usage:      optional

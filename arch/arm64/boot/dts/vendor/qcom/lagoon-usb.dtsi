@@ -15,7 +15,11 @@
 		#size-cells = <1>;
 		ranges;
 
-		interrupts = <0 494 0>, <0 130 0>, <0 497 0>, <0 495 0>;
+		interrupts-extended = <&pdc 14 IRQ_TYPE_LEVEL_HIGH>,
+			<&intc GIC_SPI 130 IRQ_TYPE_LEVEL_HIGH>,
+				<&pdc 17 IRQ_TYPE_LEVEL_HIGH>,
+				<&pdc 15 IRQ_TYPE_LEVEL_HIGH>;
+
 		interrupt-names = "dp_hs_phy_irq", "pwr_event_irq",
 				"ss_phy_irq", "dm_hs_phy_irq";
 		qcom,use-pdc-interrupts;
@@ -46,6 +50,9 @@
 			0x144 /* GSI_RING_BASE_ADDR_H */
 			0x1a4>; /* GSI_IF_STS */
 		qcom,dwc-usb3-msm-tx-fifo-size = <21288>;
+		qcom,pm-qos-latency = <61>; /* CPU0-WFI-LVL latency +1 */
+
+		qcom,gsi-disable-io-coherency;
 
 		qcom,msm-bus,name = "usb0";
 		qcom,msm-bus,num-cases = <4>;
@@ -76,10 +83,12 @@
 		dwc3@a600000 {
 			compatible = "snps,dwc3";
 			reg = <0x0a600000 0xe000>;
-			interrupts = <0 133 0>;
+			interrupts = <GIC_SPI 133 IRQ_TYPE_LEVEL_HIGH>;
 			usb-phy = <&qusb_phy0>, <&usb_qmp_dp_phy>;
 			linux,sysdev_is_parent;
 			snps,disable-clk-gating;
+			snps,dis_u2_susphy_quirk;
+			snps,dis_enblslpm_quirk;
 			snps,has-lpm-erratum;
 			snps,hird-threshold = /bits/ 8 <0x10>;
 			snps,usb3-u1u2-disable;
@@ -127,15 +136,18 @@
 		compatible = "qcom,qusb2phy-v2";
 		reg = <0x088e3000 0x400>,
 			<0x00780268 0x4>,
-			<0x088e7014 0x4>;
+			<0x088e7014 0x4>,
+			<0x088e2000 0x4>;
 		reg-names = "qusb_phy_base", "efuse_addr",
-				"refgen_north_bg_reg_addr";
+				"refgen_north_bg_reg_addr",
+				"eud_enable_reg";
 
 		qcom,efuse-bit-pos = <25>;
 		qcom,efuse-num-bits = <3>;
 		vdd-supply = <&L18A>;
 		vdda18-supply = <&L2A>;
 		vdda33-supply = <&L3A>;
+		refgen-supply = <&L22A>;
 		qcom,vdd-voltage-level = <0 880000 880000>;
 		qcom,qusb-phy-reg-offset =
 			<0x240 /* QUSB2PHY_PORT_TUNE1 */
@@ -147,6 +159,8 @@
 			 0x198 /* PLL_BIAS_CONTROL_2 */
 			 0x27c /* QUSB2PHY_DEBUG_CTRL1 */
 			 0x280 /* QUSB2PHY_DEBUG_CTRL2 */
+			 0x284 /* QUSB2PHY_DEBUG_CTRL3 */
+			 0x288 /* QUSB2PHY_DEBUG_CTRL4 */
 			 0x2a0>; /* QUSB2PHY_STAT5 */
 
 		qcom,qusb-phy-init-seq =
@@ -340,7 +354,7 @@
 
 		clocks = <&gcc GCC_USB3_PRIM_PHY_AUX_CLK>,
 			<&gcc GCC_USB3_PRIM_PHY_PIPE_CLK>,
-			<&rpmhcc RPMH_CXO_CLK>,
+			<&rpmhcc RPMH_QLINK_CLK>,
 			<&gcc GCC_USB3_PRIM_CLKREF_CLK>,
 			<&gcc GCC_USB3_PRIM_PHY_COM_AUX_CLK>;
 		clock-names = "aux_clk", "pipe_clk", "ref_clk_src",

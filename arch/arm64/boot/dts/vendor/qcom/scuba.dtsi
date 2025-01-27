@@ -291,11 +291,6 @@
 			label = "dfps_data_region";
 		};
 
-		disp_rdump_memory: disp_rdump_region@5c000000 {
-			reg = <0x0 0x5c000000 0x0 0x00f00000>;
-			label = "disp_rdump_region";
-		};
-
 		qseecom_mem: qseecom_region {
 			compatible = "shared-dma-pool";
 			alloc-ranges = <0x0 0x00000000 0x0 0xffffffff>;
@@ -324,7 +319,7 @@
 	};
 
 	chosen {
-		bootargs = "rcupdate.rcu_expedited=1 rcu_nocbs=0-7";
+		bootargs = "rcupdate.rcu_expedited=1 rcu_nocbs=0-7 kpti=off";
 	};
 
 	soc: soc { };
@@ -2222,6 +2217,7 @@
 
 	bluetooth: bt_wcn3990 {
 		compatible = "qca,wcn3990";
+		qca,bt-sw-ctrl-gpio = <&tlmm 87 0>; /* SW_CTRL */
 		qca,bt-vdd-io-supply =   <&L15A>; /* IO */
 		qca,bt-vdd-core-supply = <&L10A>; /* RFA */
 		qca,bt-vdd-pa-supply =   <&L22A>; /* CH0 */
