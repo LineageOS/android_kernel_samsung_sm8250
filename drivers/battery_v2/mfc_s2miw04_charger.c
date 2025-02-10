@@ -47,6 +47,8 @@
 #define MAX_I2C_ERROR_COUNT		30
 
 #define MAX_BUF 4095
+#define SENDSZ 16
+
 static u8 ADT_buffer_rdata[MAX_BUF] = {0, };
 static int adt_readSize;
 static bool is_shutdn = false;
@@ -1293,7 +1295,6 @@ static int mfc_auth_adt_read(struct mfc_charger_data *charger, u8 *readData)
 {
 	int buffAddr = MFC_ADT_BUFFER_ADT_PARAM_REG;
 	union power_supply_propval value = {0, };
-	const int sendsz = 16;	
 	int i = 0, size = 0;
 	int ret = 0;
 	u8 size_temp[2] = {0, 0};
@@ -1322,15 +1323,15 @@ static int mfc_auth_adt_read(struct mfc_charger_data *charger, u8 *readData)
 		return -EINVAL;
 	}
 
-	while(size > sendsz) {
-		ret = mfc_reg_multi_read(charger->client, buffAddr, readData + i, sendsz);
+	while(size > SENDSZ) {
+		ret = mfc_reg_multi_read(charger->client, buffAddr, readData + i, SENDSZ);
 		if (ret < 0) {
 			pr_err("%s %s : failed to read adt stream (%d, buff %d)\n", WC_AUTH_MSG, __func__, ret, buffAddr);
 			return ret;
 		}
-		i += sendsz;
-		buffAddr += sendsz;
-		size = size - sendsz;
+		i += SENDSZ;
+		buffAddr += SENDSZ;
+		size = size - SENDSZ;
 		pr_info("%s %s 0x%x %d %d\n", WC_AUTH_MSG, __func__, i, buffAddr, size);
 	}
 	if(size > 0) {
@@ -1604,28 +1605,27 @@ static int datacmp(const char *cs, const char *ct, int count)
 static int mfc_reg_multi_write_verify(struct i2c_client *client, u16 reg, const u8 * val, int size)
 {
 	int ret = 0;
-	const int sendsz = 16;
 	int cnt = 0;
 	int retry_cnt = 0;
-	unsigned char data[sendsz+2];
-	u8 rdata[sendsz+2];
+	unsigned char data[SENDSZ+2];
+	u8 rdata[SENDSZ+2];
 
 //	dev_dbg(&client->dev, "%s: size: 0x%x\n", __func__, size);
-	while(size > sendsz) {
+	while(size > SENDSZ) {
 		data[0] = (reg+cnt) >>8;
 		data[1] = (reg+cnt) & 0xff;
-		memcpy(data+2, val+cnt, sendsz);
+		memcpy(data+2, val+cnt, SENDSZ);
 //		dev_dbg(&client->dev, "%s: addr: 0x%x, cnt: 0x%x\n", __func__, reg+cnt, cnt);
-		ret = i2c_master_send(client, data, sendsz+2);
-		if (ret < sendsz+2) {
+		ret = i2c_master_send(client, data, SENDSZ+2);
+		if (ret < SENDSZ+2) {
 			pr_err("%s: i2c write error, reg: 0x%x\n", __func__, reg);
 			return ret < 0 ? ret : -EIO;
 		}
-		if (mfc_reg_multi_read(client, reg+cnt, rdata, sendsz) < 0) {
+		if (mfc_reg_multi_read(client, reg+cnt, rdata, SENDSZ) < 0) {
 			pr_err("%s, read failed(%d)\n", __func__, reg+cnt);
 			return -1;
 		}
-		if (datacmp(val+cnt, rdata, sendsz)) {
+		if (datacmp(val+cnt, rdata, SENDSZ)) {
 			pr_err("%s, data is not matched. retry(%d)\n", __func__, retry_cnt);
 			retry_cnt++;
 			if (retry_cnt > 4) {
@@ -1636,8 +1636,8 @@ static int mfc_reg_multi_write_verify(struct i2c_client *client, u16 reg, const 
 			continue;
 		}
 //		pr_debug("%s, data is matched!\n", __func__);
-		cnt += sendsz;
-		size -= sendsz;
+		cnt += SENDSZ;
+		size -= SENDSZ;
 		retry_cnt = 0;
 	}
 	while (size > 0) {
@@ -1675,26 +1675,25 @@ int mfc_reg_multi_write(struct i2c_client *client, u16 reg, const u8 * val, int 
 {
 	struct mfc_charger_data *charger = i2c_get_clientdata(client);
 	int ret = 0;
-	const int sendsz = 16;
-	unsigned char data[sendsz+2];
+	unsigned char data[SENDSZ+2];
 	int cnt = 0;
 
 	pr_err("%s: size: 0x%x\n",
 				__func__, size);
-	while(size > sendsz) {
+	while(size > SENDSZ) {
 		data[0] = (reg+cnt) >>8;
 		data[1] = (reg+cnt) & 0xff;
-		memcpy(data+2, val+cnt, sendsz);
+		memcpy(data+2, val+cnt, SENDSZ);
 		mutex_lock(&charger->io_lock);
-		ret = i2c_master_send(client, data, sendsz+2);
+		ret = i2c_master_send(client, data, SENDSZ+2);
 		mutex_unlock(&charger->io_lock);
-		if (ret < sendsz+2) {
+		if (ret < SENDSZ+2) {
 			pr_err("%s: i2c write error, reg: 0x%x\n",
 					__func__, reg);
 			return ret < 0 ? ret : -EIO;
 		}
-		cnt = cnt + sendsz;
-		size = size - sendsz;
+		cnt = cnt + SENDSZ;
+		size = size - SENDSZ;
 	}
 	if (size > 0) {
 		data[0] = (reg+cnt) >>8;
