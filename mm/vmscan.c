@@ -2455,18 +2455,12 @@ static ssize_t am_app_launch_show(struct kobject *kobj,
 
 static int notify_app_launch_started(void)
 {
-#if defined(CONFIG_TRACING) && defined(DEBUG)
-	trace_printk("%s\n", "am_app_launch started");
-#endif
 	atomic_notifier_call_chain(&am_app_launch_notifier, 1, NULL);
 	return 0;
 }
 
 static int notify_app_launch_finished(void)
 {
-#if defined(CONFIG_TRACING) && defined(DEBUG)
-	trace_printk("%s\n", "am_app_launch finished");
-#endif
 	atomic_notifier_call_chain(&am_app_launch_notifier, 0, NULL);
 	return 0;
 }
@@ -2484,10 +2478,6 @@ static ssize_t am_app_launch_store(struct kobject *kobj,
 		return -EINVAL;
 
 	am_app_launch_new = mode ? true : false;
-#if defined(CONFIG_TRACING) && defined(DEBUG)
-	trace_printk("am_app_launch %d -> %d\n", am_app_launch,
-		     am_app_launch_new);
-#endif
 	if (am_app_launch != am_app_launch_new) {
 		if (am_app_launch_new)
 			notify_app_launch_started();
@@ -2855,9 +2845,6 @@ void forced_shrink_node_memcg(struct pglist_data *pgdat, struct mem_cgroup *memc
 		nr[LRU_ACTIVE_FILE] = nr[LRU_INACTIVE_FILE] = file;
 	}
 
-#if defined(CONFIG_TRACING) && defined(DEBUG)
-	trace_printk("%s heimdall start %d %lu %lu %lu\n", __func__, type, nr_requested, anon, file);
-#endif
 	blk_start_plug(&plug);
 	while (nr[LRU_INACTIVE_ANON] > 0 || nr[LRU_INACTIVE_FILE] > 0) {
 		for_each_evictable_lru(lru) {
@@ -2877,10 +2864,6 @@ void forced_shrink_node_memcg(struct pglist_data *pgdat, struct mem_cgroup *memc
 	}
 	blk_finish_plug(&plug);
 	sc.nr_reclaimed += nr_reclaimed;
-#if defined(CONFIG_TRACING) && defined(DEBUG)
-	trace_printk("%s end %d %lu %lu %lu\n", __func__, type, nr_reclaimed,
-		nr[LRU_INACTIVE_ANON], nr[LRU_INACTIVE_FILE]);
-#endif
 }
 #endif
 
