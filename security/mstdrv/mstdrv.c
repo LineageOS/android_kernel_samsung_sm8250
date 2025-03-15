@@ -623,9 +623,7 @@ static int transmit_mst_data(int track)
 
         printk("[MST] cmd_id = %x, req_len = %d, rsp_len = %d\n", kreq->cmd_id, req_len, rsp_len);
 
-        trace_printk("tracing mark write: MST transmission Start\n");
         qsee_ret = qseecom_send_command(qhandle, kreq, req_len, krsp, rsp_len);
-        trace_printk("tracing mark write: MST transmission End\n");
 
         if (qsee_ret) {
                 ret = ERROR_VALUE;
