@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ccc300a_0f4c3e9f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 28935
+      },
+      "writtenOn": "2025-03-25T14:06:18Z",
+      "side": 1,
+      "message": "dont know if this is the proper solution,\nbut it fixes the `system_server` crash when inserting or removing the SPen on `gts7xl`",
+      "revId": "8107e16492ffd8bc0596f9eaa52dcf461de039fc",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
