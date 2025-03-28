@@ -2093,7 +2093,6 @@ static u8 fts_event_handler_type_b(struct fts_ts_info *info)
 			if (p_gesture_status->sf == FTS_GESTURE_SAMSUNG_FEATURE) {
 				switch (p_gesture_status->stype) {
 				case FTS_SPONGE_EVENT_SWIPE_UP:
-					info->scrub_id = SPONGE_EVENT_TYPE_SPAY;
 					input_info(true, &info->client->dev, "%s: SPAY\n", __func__);
 					input_report_key(info->input_dev, KEY_BLACK_UI_GESTURE, 1);
 					input_sync(info->input_dev);
@@ -2101,10 +2100,6 @@ static u8 fts_event_handler_type_b(struct fts_ts_info *info)
 					break;
 				case FTS_SPONGE_EVENT_DOUBLETAP:
 					if (p_gesture_status->gesture_id == FTS_SPONGE_EVENT_GESTURE_ID_AOD) {
-						info->scrub_id = SPONGE_EVENT_TYPE_AOD_DOUBLETAB;
-						info->scrub_x = (p_gesture_status->gesture_data_1 << 4) | (p_gesture_status->gesture_data_3 >> 4);
-						info->scrub_y = (p_gesture_status->gesture_data_2 << 4) | (p_gesture_status->gesture_data_3 & 0x0F);
-
 						input_info(true, &info->client->dev, "%s: AOD\n", __func__);
 						input_report_key(info->input_dev, KEY_BLACK_UI_GESTURE, 1);
 						input_sync(info->input_dev);
@@ -2117,10 +2112,6 @@ static u8 fts_event_handler_type_b(struct fts_ts_info *info)
 					}
 					break;
 				case FTS_SPONGE_EVENT_SINGLETAP:
-					info->scrub_id = SPONGE_EVENT_TYPE_SINGLE_TAP;
-					info->scrub_x = (p_gesture_status->gesture_data_1 << 4) | (p_gesture_status->gesture_data_3 >> 4);
-					info->scrub_y = (p_gesture_status->gesture_data_2 << 4) | (p_gesture_status->gesture_data_3 & 0x0F);
-
 					input_info(true, &info->client->dev, "%s: SINGLE TAP\n", __func__);
 					input_report_key(info->input_dev, KEY_BLACK_UI_GESTURE, 1);
 					input_sync(info->input_dev);
@@ -2145,13 +2136,16 @@ static u8 fts_event_handler_type_b(struct fts_ts_info *info)
 					if (p_gesture_status->gesture_id == FTS_SPONGE_EVENT_GESTURE_ID_FOD_LONG ||
 							p_gesture_status->gesture_id == FTS_SPONGE_EVENT_GESTURE_ID_FOD_NORMAL) {
 						info->scrub_id = SPONGE_EVENT_TYPE_FOD;
+						sysfs_notify(&info->sec.fac_dev->kobj, NULL, "scrub_pos");
 						input_info(true, &info->client->dev, "%s: FOD %sPRESS\n",
 								__func__, p_gesture_status->gesture_id ? "" : "LONG");
 					} else if (p_gesture_status->gesture_id == FTS_SPONGE_EVENT_GESTURE_ID_FOD_RELEASE) {
 						info->scrub_id = SPONGE_EVENT_TYPE_FOD_RELEASE;
+						sysfs_notify(&info->sec.fac_dev->kobj, NULL, "scrub_pos");
 						input_info(true, &info->client->dev, "%s: FOD RELEASE\n", __func__);
 					} else if (p_gesture_status->gesture_id == FTS_SPONGE_EVENT_GESTURE_ID_FOD_OUT) {
 						info->scrub_id = SPONGE_EVENT_TYPE_FOD_OUT;
+						sysfs_notify(&info->sec.fac_dev->kobj, NULL, "scrub_pos");
 						input_info(true, &info->client->dev, "%s: FOD OUT\n", __func__);
 					} else if (p_gesture_status->gesture_id == FTS_SPONGE_EVENT_GESTURE_ID_FOD_VI) {
 						if (info->lowpower_flag & FTS_MODE_PRESS) {
