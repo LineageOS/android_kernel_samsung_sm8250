@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03ad7e2e_69f97382",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-03-30T17:22:40Z",
+      "side": 1,
+      "message": "This is causing a kernel bug on gts7lwifi.\n\n\u003e  \u003c3\u003e[   24.420604]  [6:  kworker/u16:8:  336] subsys-pil-tz soc:qcom,ipa_fws: ipa_fws: Initializing image failed(rc:-22)\n\u003e  \u003c3\u003e[   24.420630]  [6:  kworker/u16:8:  336] ipa ipa3_pil_load_ipa_fws:6315 Unable to PIL load FW for sub_sys\u003dipa_fws\n\u003e  \u003c3\u003e[   24.420724]  [5:  kworker/u16:8:  336] ipa ipa3_load_ipa_fw:6358 IPA FW loading process has failed result\u003d-22\n\u003e  \u003c3\u003e[   24.420729]  [5:  kworker/u16:8:  336] IPA: unrecoverable error has occurred, asserting\n\u003e  \u003c4\u003e[   24.420744]  [5:  kworker/u16:8:  336] ------------[ cut here ]------------\n\u003e  \u003c2\u003e[   24.420747]  [5:  kworker/u16:8:  336] kernel BUG at ../../../../../../kernel/samsung/sm8250/drivers/platform/msm/ipa/ipa_api.c:3462!\n\u003e  \u003c0\u003e[   24.420759]  [5:  kworker/u16:8:  336] Internal error: Oops - BUG: 0 [#1] PREEMPT SMP",
+      "revId": "b83e73102df8d717697c9d7a34f840b9e3137e9c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee5675b9_d0142c53",
