@@ -110,10 +110,15 @@ static int fts_panel_state_notifier(struct notifier_block *nb,
 
     switch (panel_state) {
     case PANEL_ON:
+        info->lowpower_flag &= ~FTS_MODE_AOD;
         fts_set_lowpowermode(info, TO_TOUCH_MODE);
         break;
     case PANEL_OFF:
+        info->lowpower_flag &= ~FTS_MODE_AOD;
+        fts_set_lowpowermode(info, TO_LOWPOWER_MODE);
+        break;
     case PANEL_LPM:
+        info->lowpower_flag |= FTS_MODE_AOD;
         fts_set_lowpowermode(info, TO_LOWPOWER_MODE);
         break;
     default:
