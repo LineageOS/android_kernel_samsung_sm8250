@@ -70,6 +70,23 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "afa22bc7_c14ecd9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 33569
+      },
+      "writtenOn": "2025-03-30T19:57:21Z",
+      "side": 1,
+      "message": "It\u0027s due to disabled Kconfig entries.",
+      "revId": "b83e73102df8d717697c9d7a34f840b9e3137e9c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee5675b9_d0142c53",
