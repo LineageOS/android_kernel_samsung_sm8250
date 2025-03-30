@@ -18,6 +18,23 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93558a4f_b336a333",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 33569
+      },
+      "writtenOn": "2025-03-30T17:45:48Z",
+      "side": 1,
+      "message": "Driver is fine with a 4.19 Exynos device. It must be a issue in our end.",
+      "revId": "b83e73102df8d717697c9d7a34f840b9e3137e9c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee5675b9_d0142c53",
