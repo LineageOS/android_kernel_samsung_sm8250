@@ -55,6 +55,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e78e0daf_628468f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 33569
+      },
+      "writtenOn": "2025-03-30T18:03:01Z",
+      "side": 1,
+      "message": "Yes, I tested and it worked. But looks like it doesn\u0027t work with AOSP.",
+      "revId": "b83e73102df8d717697c9d7a34f840b9e3137e9c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ee5675b9_d0142c53",
         "filename": "fs/sdfat/Kconfig",
         "patchSetId": 2
