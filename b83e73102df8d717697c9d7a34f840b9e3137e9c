@@ -16,6 +16,24 @@
       "message": "Is this modification from Samsung?",
       "revId": "b83e73102df8d717697c9d7a34f840b9e3137e9c",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a4df62e_4c6a592c",
+        "filename": "fs/sdfat/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 33569
+      },
+      "writtenOn": "2025-03-30T02:10:29Z",
+      "side": 1,
+      "message": "Yes, I confirmed it from kernel source.",
+      "parentUuid": "ee5675b9_d0142c53",
+      "revId": "b83e73102df8d717697c9d7a34f840b9e3137e9c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
