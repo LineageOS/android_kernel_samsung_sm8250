@@ -25,10 +25,14 @@ static noinline void tracing_mark_write(int type, const char *str)
 
 	switch (type) {
 	case TRACING_MARK_TYPE_BEGIN:
+#if defined(DEBUG)
 		trace_printk("B|%d|%s\n", current->tgid, str);
+#endif
 		break;
 	case TRACING_MARK_TYPE_END:
+#if defined(DEBUG)
 		trace_printk("E|%d|%s\n", current->tgid, str);
+#endif
 		break;
 	default:
 		break;
