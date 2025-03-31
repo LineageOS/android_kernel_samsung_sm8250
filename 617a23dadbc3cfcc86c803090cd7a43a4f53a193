@@ -16,6 +16,24 @@
       "message": "After qcom/sm8250 merge.",
       "revId": "617a23dadbc3cfcc86c803090cd7a43a4f53a193",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de13f1c9_40b8e4aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 28223
+      },
+      "writtenOn": "2025-03-31T14:14:03Z",
+      "side": 1,
+      "message": "Updated the chain there to match Alex\u0027s sm8150 change on Iff956ce7c2b89d3a442b0b81deba0da323f5d18b btw",
+      "parentUuid": "51f3102c_0b9bf2c5",
+      "revId": "617a23dadbc3cfcc86c803090cd7a43a4f53a193",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
