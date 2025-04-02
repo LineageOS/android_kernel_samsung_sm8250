@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9412eaaa_05cbbc67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 28935
+      },
+      "writtenOn": "2025-04-02T14:40:24Z",
+      "side": 1,
+      "message": "copied from the other display panel\nthe display lights up slightly while the fingerprint is active\n\nwill need proper calibration",
+      "revId": "676e0a441d736e868b8698535ca757ef43c311e0",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
