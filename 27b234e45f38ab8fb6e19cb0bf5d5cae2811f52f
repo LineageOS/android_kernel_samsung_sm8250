@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f5bfe6b_053e7b78",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-04-10T20:20:57Z",
+      "side": 1,
+      "message": "This is part os qcom_sm8250 kernel. Why isn\u0027t it present here by now?",
+      "revId": "27b234e45f38ab8fb6e19cb0bf5d5cae2811f52f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
