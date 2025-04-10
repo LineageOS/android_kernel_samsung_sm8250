@@ -37,7 +37,7 @@
 	pogo_touchpad {
 		compatible = "stm,touchpad";
 		touchpad,max_coords = <2560 1600>;	/* x y */
-		touchpad,invert = <0 1 1>; /* x invert, y invert, xy switch */
+		touchpad,invert = <0 0 0>; /* x invert, y invert, xy switch */
 	};
 
 	pogo_kpd {
