@@ -16,6 +16,23 @@
       "message": "This is part os qcom_sm8250 kernel. Why isn\u0027t it present here by now?",
       "revId": "27b234e45f38ab8fb6e19cb0bf5d5cae2811f52f",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bd4e287_b129a78a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 33569
+      },
+      "writtenOn": "2025-04-12T10:43:07Z",
+      "side": 1,
+      "message": "I assume it was probably removed while cleaning the kernel from OEM stuff.",
+      "revId": "27b234e45f38ab8fb6e19cb0bf5d5cae2811f52f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
