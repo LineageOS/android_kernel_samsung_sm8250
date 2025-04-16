@@ -33,6 +33,24 @@
       "message": "I was doing this instead - https://review.lineageos.org/c/LineageOS/android_device_samsung_gts7xlwifi/+/427487. It also fixes vol up/down keys.",
       "revId": "1eaae93db33fbb6d55a31d9eb70d920431ce0f0a",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "342a8ac6_b8a5cfcb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-04-16T23:07:19Z",
+      "side": 1,
+      "message": "Can you explain what this commit was supposed to fix? Because for me the dpad keys are still wrong.",
+      "parentUuid": "59af93c6_a8c5180e",
+      "revId": "1eaae93db33fbb6d55a31d9eb70d920431ce0f0a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
