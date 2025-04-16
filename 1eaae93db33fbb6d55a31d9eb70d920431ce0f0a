@@ -16,6 +16,23 @@
       "message": "This fixes rotated trackpad when using the Samsung keyboard cover",
       "revId": "1eaae93db33fbb6d55a31d9eb70d920431ce0f0a",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a245915b_c80b2096",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-04-16T19:12:10Z",
+      "side": 1,
+      "message": "I was doing this instead - https://review.lineageos.org/c/LineageOS/android_device_samsung_gts7xlwifi/+/427487. It also fixes vol up/down keys.",
+      "revId": "1eaae93db33fbb6d55a31d9eb70d920431ce0f0a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
