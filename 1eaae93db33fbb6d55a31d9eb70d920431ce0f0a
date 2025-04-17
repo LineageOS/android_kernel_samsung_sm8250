@@ -104,6 +104,24 @@
       "parentUuid": "a58608c0_6f37edec",
       "revId": "1eaae93db33fbb6d55a31d9eb70d920431ce0f0a",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "818441a7_88c7b8dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 35060
+      },
+      "writtenOn": "2025-04-17T11:17:56Z",
+      "side": 1,
+      "message": "Dropped my change and added yours. I confirm that volume buttons and cursor keys are oriented correctly, but touchpad input is still rotated. Btw I also tried a similar approach using an input config file, I didn\u0027t think to try \"keyboard.orientationAware \u003d 0\" but I used \"cursor.orientationAware \u003d 0\" which was not successful either.",
+      "parentUuid": "8932db8d_41daa420",
+      "revId": "1eaae93db33fbb6d55a31d9eb70d920431ce0f0a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
