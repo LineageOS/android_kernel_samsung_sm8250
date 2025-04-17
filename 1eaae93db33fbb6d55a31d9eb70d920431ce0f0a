@@ -140,6 +140,24 @@
       "parentUuid": "818441a7_88c7b8dd",
       "revId": "1eaae93db33fbb6d55a31d9eb70d920431ce0f0a",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "198122fb_ca6c49b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 35060
+      },
+      "writtenOn": "2025-04-17T19:06:09Z",
+      "side": 1,
+      "message": "Before change:\n  sec_touchpad_pogo\n    EventHub Devices: [ 11 ] \n    Generation: 59\n    IsExternal: false\n    IsWaking: false\n    AssociatedDisplayPort: \u003cnone\u003e\n    AssociatedDisplayUniqueIdByPort: \u003cnone\u003e\n    AssociatedDisplayUniqueIdByDescriptor: \u003cnone\u003e\n    HasMic:     false\n    Sources: MOUSE | TOUCHPAD\n    KeyboardType: 0\n    ControllerNum: 0\n    Motion Ranges:\n      PRESSURE: source\u003dMOUSE, min\u003d0.000, max\u003d1.000, flat\u003d0.000, fuzz\u003d0.000, resolution\u003d0.000\n      X: source\u003dMOUSE, min\u003d0.000, max\u003d2799.000, flat\u003d0.000, fuzz\u003d0.000, resolution\u003d0.000\n      Y: source\u003dMOUSE, min\u003d0.000, max\u003d1751.000, flat\u003d0.000, fuzz\u003d0.000, resolution\u003d0.000\n      GESTURE_X_OFFSET: source\u003dMOUSE, min\u003d-1.000, max\u003d1.000, flat\u003d0.000, fuzz\u003d0.000, resolution\u003d0.000\n      GESTURE_Y_OFFSET: source\u003dMOUSE, min\u003d-1.000, max\u003d1.000, flat\u003d0.000, fuzz\u003d0.000, resolution\u003d0.000\n    Touchpad Input Mapper:\n      Pointer captured: false\n      Gesture converter:\n        Orientation: Rotation270\n        Axis info:\n          X: min\u003d0, max\u003d1599, flat\u003d0, fuzz\u003d0, resolution\u003d0\n          Y: min\u003d0, max\u003d2559, flat\u003d0, fuzz\u003d0, resolution\u003d0\n        Button state: 0x00000000\n        Down time: 0\n        Current classification: NONE\n        Is hovering: 1\n        Enable Tap Timestamp: 0\n        Three finger tap shortcut enabled: disabled\n\nAfter change:\n  sec_touchpad_pogo\n    EventHub Devices: [ 16 ] \n    Generation: 130\n    IsExternal: false\n    IsWaking: false\n    AssociatedDisplayPort: \u003cnone\u003e\n    AssociatedDisplayUniqueIdByPort: \u003cnone\u003e\n    AssociatedDisplayUniqueIdByDescriptor: \u003cnone\u003e\n    HasMic:     false\n    Sources: MOUSE | TOUCHPAD\n    KeyboardType: 0\n    ControllerNum: 0\n    Motion Ranges:\n      PRESSURE: source\u003dMOUSE, min\u003d0.000, max\u003d1.000, flat\u003d0.000, fuzz\u003d0.000, resolution\u003d0.000\n      X: source\u003dMOUSE, min\u003d0.000, max\u003d2799.000, flat\u003d0.000, fuzz\u003d0.000, resolution\u003d0.000\n      Y: source\u003dMOUSE, min\u003d0.000, max\u003d1751.000, flat\u003d0.000, fuzz\u003d0.000, resolution\u003d0.000\n      GESTURE_X_OFFSET: source\u003dMOUSE, min\u003d-1.000, max\u003d1.000, flat\u003d0.000, fuzz\u003d0.000, resolution\u003d0.000\n      GESTURE_Y_OFFSET: source\u003dMOUSE, min\u003d-1.000, max\u003d1.000, flat\u003d0.000, fuzz\u003d0.000, resolution\u003d0.000\n    Touchpad Input Mapper:\n      Pointer captured: false\n      Gesture converter:\n        Orientation: Rotation270\n        Axis info:\n          X: min\u003d0, max\u003d2559, flat\u003d0, fuzz\u003d0, resolution\u003d0\n          Y: min\u003d0, max\u003d1599, flat\u003d0, fuzz\u003d0, resolution\u003d0\n        Button state: 0x00000000\n        Down time: 1735220606732\n        Current classification: NONE\n        Is hovering: 1\n        Enable Tap Timestamp: 1471507046000\n        Three finger tap shortcut enabled: disabled",
+      "parentUuid": "82a9c349_28497af9",
+      "revId": "1eaae93db33fbb6d55a31d9eb70d920431ce0f0a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
