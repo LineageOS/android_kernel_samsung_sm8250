@@ -122,6 +122,24 @@
       "parentUuid": "8932db8d_41daa420",
       "revId": "1eaae93db33fbb6d55a31d9eb70d920431ce0f0a",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82a9c349_28497af9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-04-17T12:51:27Z",
+      "side": 1,
+      "message": "Can you share the output of `dumpsys input` with your keyboard cover?",
+      "parentUuid": "818441a7_88c7b8dd",
+      "revId": "1eaae93db33fbb6d55a31d9eb70d920431ce0f0a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
