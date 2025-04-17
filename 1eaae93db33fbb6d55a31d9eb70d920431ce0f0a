@@ -68,6 +68,24 @@
       "message": "Sorry, I don\u0027t have a keyboard flip cover, can\u0027t help here.",
       "revId": "1eaae93db33fbb6d55a31d9eb70d920431ce0f0a",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a58608c0_6f37edec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 35060
+      },
+      "writtenOn": "2025-04-17T09:24:37Z",
+      "side": 1,
+      "message": "I don\u0027t think we are discussing the same thing. You\u0027re talking about dpad keys and your linked commit message references the EF-DT730 keyboard cover. A Google image search show this keyboard doesn\u0027t have a trackpad unlike my keyboard cover which is the EF-DT970 which has a trackpad like a laptop. The trackpad input is rotated 90 degrees with respect to display orientation and this commit fixes that.",
+      "parentUuid": "342a8ac6_b8a5cfcb",
+      "revId": "1eaae93db33fbb6d55a31d9eb70d920431ce0f0a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
