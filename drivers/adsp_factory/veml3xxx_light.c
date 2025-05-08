@@ -39,11 +39,6 @@ static ssize_t light_name_show(struct device *dev,
 	return snprintf(buf, PAGE_SIZE, "%s\n", CHIP_ID);
 }
 
-static ssize_t light_lcd_onoff_store(struct device *dev,
-	struct device_attribute *attr, const char *buf, size_t size)
-{
-	return size;
-}
 
 int get_light_sidx(struct adsp_data *data)
 {
@@ -120,7 +115,6 @@ static ssize_t light_get_dhr_sensor_info_show(struct device *dev,
 
 static DEVICE_ATTR(vendor, 0444, light_vendor_show, NULL);
 static DEVICE_ATTR(name, 0444, light_name_show, NULL);
-static DEVICE_ATTR(lcd_onoff, 0220, NULL, light_lcd_onoff_store);
 static DEVICE_ATTR(lux, 0444, light_raw_data_show, NULL);
 static DEVICE_ATTR(raw_data, 0444, light_raw_data_show, NULL);
 static DEVICE_ATTR(dhr_sensor_info, 0444, light_get_dhr_sensor_info_show, NULL);
@@ -128,7 +122,6 @@ static DEVICE_ATTR(dhr_sensor_info, 0444, light_get_dhr_sensor_info_show, NULL);
 static struct device_attribute *light_attrs[] = {
 	&dev_attr_vendor,
 	&dev_attr_name,
-	&dev_attr_lcd_onoff,
 	&dev_attr_lux,
 	&dev_attr_raw_data,
 	&dev_attr_dhr_sensor_info,
