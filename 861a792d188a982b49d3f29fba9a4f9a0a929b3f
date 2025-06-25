@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ba19e55_ef0339c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-06-25T23:09:10Z",
+      "side": 1,
+      "message": "Since I can\u0027t test this as I don\u0027t have that variant of the keyboard cover, I am fine merging this. I am however unsure if this applies to both s7 and s7+. In which device did you test this?",
+      "revId": "861a792d188a982b49d3f29fba9a4f9a0a929b3f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
