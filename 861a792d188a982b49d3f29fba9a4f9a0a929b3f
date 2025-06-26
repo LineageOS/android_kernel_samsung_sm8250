@@ -16,6 +16,24 @@
       "message": "Since I can\u0027t test this as I don\u0027t have that variant of the keyboard cover, I am fine merging this. I am however unsure if this applies to both s7 and s7+. In which device did you test this?",
       "revId": "861a792d188a982b49d3f29fba9a4f9a0a929b3f",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30aa4c1e_58e487f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 35060
+      },
+      "writtenOn": "2025-06-26T19:57:40Z",
+      "side": 1,
+      "message": "I have the tab s7+ and have tested on this device. I assumed that the s7 would also need this, but I have checked the gts7l device tree on the Lineage org and noticed there aren\u0027t any of the display rotation commits there, so it\u0027s probably not needed on the regular s7",
+      "parentUuid": "2ba19e55_ef0339c2",
+      "revId": "861a792d188a982b49d3f29fba9a4f9a0a929b3f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
