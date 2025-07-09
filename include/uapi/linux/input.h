@@ -369,7 +369,6 @@ struct input_mask {
  */
 #define SW_CERTIFYHALL          0x1b  /* set = certify_hall attach/detach */
 #define SW_WACOM_HALL		0x1e  /* set = wacom hall ic attach/detach */
-#define SW_HALL_LOGICAL		0x1f  /* set = logical hall ic attach/detach */
 
 /*
  * IDs.

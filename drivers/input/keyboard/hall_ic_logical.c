@@ -113,12 +113,6 @@ static int logical_hallic_notifier_handler(struct notifier_block *nb,
 			hall_backflip_status = 0;
 			input_info(true, &logical_hall_dev->input->dev, "%s hall_status = %d (NORMAL)\n", __func__, hall_status);
 			input_report_switch(logical_hall_dev->input, SW_LID, hall_logical_status);
-			input_report_switch(logical_hall_dev->input, SW_HALL_LOGICAL, hall_backflip_status);
-			input_sync(logical_hall_dev->input);
-		} else if (hall_status == E_LID_360) {
-			hall_backflip_status = 1;
-			input_info(true, &logical_hall_dev->input->dev, "%s hall_status = %d (BACK)\n", __func__, hall_status);
-			input_report_switch(logical_hall_dev->input, SW_HALL_LOGICAL, hall_backflip_status);
 			input_sync(logical_hall_dev->input);
 		}
 		
@@ -171,7 +165,6 @@ static int hall_logical_probe(struct platform_device *pdev)
 
 	input->evbit[0] |= BIT_MASK(EV_SW);
 	input_set_capability(input, EV_SW, SW_LID);
-	input_set_capability(input, EV_SW, SW_HALL_LOGICAL);
 
 	input->open = hall_logical_open;
 	input->close = hall_logical_close;
@@ -203,7 +196,6 @@ static int hall_logical_probe(struct platform_device *pdev)
 			logical_hallic_notifier_handler, POGO_NOTIFY_DEV_HALLIC);
 
 	input_report_switch(input, SW_LID, hall_logical_status);
-	input_report_switch(input, SW_HALL_LOGICAL, hall_backflip_status);
 	input_info(true, dev, "%s hall_status = %d backflip_status = %d\n", __func__, hall_logical_status, hall_backflip_status);
 
 	pr_info("%s end", __func__);
