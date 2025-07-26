@@ -1883,6 +1883,7 @@ out:
 int fib_multipath_hash(const struct net *net, const struct flowi4 *fl4,
 		       const struct sk_buff *skb, struct flow_keys *flkeys)
 {
+	u32 multipath_hash = fl4->flowi4_multipath_hash;
 	struct flow_keys hash_keys;
 	u32 mhash;
 
@@ -1932,6 +1933,9 @@ int fib_multipath_hash(const struct net *net, const struct flowi4 *fl4,
 		break;
 	}
 	mhash = flow_hash_from_keys(&hash_keys);
+
+	if (multipath_hash)
+		mhash = jhash_2words(mhash, multipath_hash, 0);
 
 	return mhash >> 1;
 }
@@ -2037,6 +2041,7 @@ static int ip_route_input_slow(struct sk_buff *skb, __be32 daddr, __be32 saddr,
 	fl4.daddr = daddr;
 	fl4.saddr = saddr;
 	fl4.flowi4_uid = sock_net_uid(net, NULL);
+	fl4.flowi4_multipath_hash = 0;
 
 	if (fib4_rules_early_flow_dissect(net, skb, &fl4, &_flkeys)) {
 		flkeys = &_flkeys;
