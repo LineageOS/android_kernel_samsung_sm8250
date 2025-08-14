@@ -874,11 +874,11 @@ static ssize_t max77705_muic_show_afc_disable(struct device *dev,
 
 	if (pdata->afc_disable) {
 		pr_info("%s:%s AFC DISABLE\n", MUIC_DEV_NAME, __func__);
-		return sprintf(buf, "1\n");
+	} else {
+		pr_info("%s:%s AFC ENABLE\n", MUIC_DEV_NAME, __func__);
 	}
 
-	pr_info("%s:%s AFC ENABLE", MUIC_DEV_NAME, __func__);
-	return sprintf(buf, "0\n");
+	return snprintf(buf, 4, "%d\n", pdata->afc_disable);
 }
 
 static ssize_t max77705_muic_set_afc_disable(struct device *dev,
