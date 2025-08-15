@@ -239,12 +239,12 @@ config PINCTRL_SDM660
 	 Qualcomm Technologies, Inc. SDM660 platform.
 
 config SENSORS_FP_SPI_GPIO_START
-    depends on SENSORS_FINGERPRINT
+    depends on SENSORS_FINGERPRINT || SENSORS_FINGERPRINT_V2
 	int "Fingerprint spi gpio number start"
 	default 0
 
 config SENSORS_FP_SPI_GPIO_END
-    depends on SENSORS_FINGERPRINT
+    depends on SENSORS_FINGERPRINT || SENSORS_FINGERPRINT_V2
 	int "Fingerprint spi gpio number end"
 	default 0
 
