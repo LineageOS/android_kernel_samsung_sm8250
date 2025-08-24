@@ -1,4 +1,22 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c42fa332_487d2f87",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-08-24T09:36:37Z",
+      "side": 1,
+      "message": "Out of curiosity, was this working on r8q? It was broken on gts7xl(wifi).",
+      "revId": "1d449e3251b6c7f8be4ba14b00bce4c4dcb1d5ba",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ],
   "submitRequirementResults": []
 }
