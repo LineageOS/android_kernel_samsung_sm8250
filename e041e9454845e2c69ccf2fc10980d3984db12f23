@@ -16,6 +16,23 @@
       "message": "Can you revisit this? It looks like kona defconfig got lots of updates with the newly merged chain.",
       "revId": "e041e9454845e2c69ccf2fc10980d3984db12f23",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "335d2bff_4e675ef1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 33569
+      },
+      "writtenOn": "2025-08-30T03:07:05Z",
+      "side": 1,
+      "message": "Unused Qualcomm hardware configs must be disabled and maybe some adjustments depending to our needs. Some of the disabled configs are enabled again but qcom_sm8250 disables them with the new defconfig changes so not a big deal.",
+      "revId": "e041e9454845e2c69ccf2fc10980d3984db12f23",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ],
   "submitRequirementResults": []
