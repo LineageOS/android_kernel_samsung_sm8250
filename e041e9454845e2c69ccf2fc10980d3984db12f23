@@ -33,6 +33,24 @@
       "message": "Unused Qualcomm hardware configs must be disabled and maybe some adjustments depending to our needs. Some of the disabled configs are enabled again but qcom_sm8250 disables them with the new defconfig changes so not a big deal.",
       "revId": "e041e9454845e2c69ccf2fc10980d3984db12f23",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ba450a5_86106d8e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 33569
+      },
+      "writtenOn": "2025-08-31T09:43:26Z",
+      "side": 1,
+      "message": "Disabled configs:\nCONFIG_KINECTICS_XR_NORDIC\nCONFIG_NFC_NQ\nCONFIG_OKL4_GUEST\nCONFIG_PINCTRL_SX150X\nCONFIG_QCOM_INITIAL_LOGBUF\nCONFIG_QPNP_FG_GEN4\nCONFIG_QPNP_PBS\nCONFIG_QPNP_QNOVO5\nCONFIG_QPNP_SMB5\nCONFIG_QTI_MAXIM_FAN_CONTROLLER\nCONFIG_QTI_XR_SMRTVWR_MISC\nCONFIG_SDCARD_FS\nCONFIG_SLAB_FREELIST_HARDENED\nCONFIG_SLAB_FREELIST_RANDOM\nCONFIG_SMB1355_SLAVE_CHARGER\nCONFIG_SMB1390_CHARGE_PUMP_PSY\nCONFIG_TOUCHSCREEN_FTS\nCONFIG_CPU_BOOST\nCONFIG_CAN\nCONFIG_VSERVICES_SUPPORT\nCONFIG_MEDIA_DIGITAL_TV_SUPPORT\nCONFIG_VIDEO_ADV_DEBUG\nCONFIG_VIDEO_V4L2_VIDEOBUF2_CORE\nCONFIG_I2C_RTC6226_QCA\nCONFIG_USB_ACM\nCONFIG_USB_SERIAL_CP210X\nCONFIG_USB_REDRIVER_NB7VPQ904M\nCONFIG_MSM_QBT_HANDLER\nCONFIG_ADS7052_TDK_THERMISTOR\nCONFIG_ARM_DSU_PMU\nCONFIG_PROC_TRIGGER_SQLITE_BUG\nCONFIG_CRYPTO_DRBG_HASH\nCONFIG_CRYPTO_DRBG_CTR\nCONFIG_IOSCHED_BFQ\nCONFIG_IGB\nCONFIG_AQFWD\nCONFIG_HL6111R\nCONFIG_DRM_LONTIUM_LT9611UXC\nCONFIG_INIT_ON_ALLOC_DEFAULT_ON\nCONFIG_ION_POOL_AUTO_REFILL\nCONFIG_IIO_BUFFER\n\nAlso synced with MPTCP removal.",
+      "parentUuid": "335d2bff_4e675ef1",
+      "revId": "e041e9454845e2c69ccf2fc10980d3984db12f23",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ],
   "submitRequirementResults": []
