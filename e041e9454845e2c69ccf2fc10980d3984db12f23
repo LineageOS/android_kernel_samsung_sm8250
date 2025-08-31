@@ -105,6 +105,24 @@
       "parentUuid": "7544ded6_b09bced1",
       "revId": "e041e9454845e2c69ccf2fc10980d3984db12f23",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1fbbd9c_8f9bd961",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-08-31T13:21:41Z",
+      "side": 1,
+      "message": "Tab S7 boots now. Let me try S7+ (already running 23.0).",
+      "parentUuid": "d70d5f4a_ec1d3106",
+      "revId": "e041e9454845e2c69ccf2fc10980d3984db12f23",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ],
   "submitRequirementResults": []
