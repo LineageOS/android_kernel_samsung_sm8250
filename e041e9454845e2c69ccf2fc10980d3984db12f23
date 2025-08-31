@@ -69,6 +69,24 @@
       "parentUuid": "5ba450a5_86106d8e",
       "revId": "e041e9454845e2c69ccf2fc10980d3984db12f23",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7544ded6_b09bced1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 33569
+      },
+      "writtenOn": "2025-08-31T12:44:03Z",
+      "side": 1,
+      "message": "Yes, I booted succesfully. Patchset 2 wasn\u0027t booting?",
+      "parentUuid": "c93dd9af_6410f811",
+      "revId": "e041e9454845e2c69ccf2fc10980d3984db12f23",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ],
   "submitRequirementResults": []
