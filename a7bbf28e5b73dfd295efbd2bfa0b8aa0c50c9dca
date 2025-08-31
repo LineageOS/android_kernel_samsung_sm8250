@@ -16,6 +16,24 @@
       "message": "There might be a regression somewhere. On S7+, after display dims out it can\u0027t be powered on immediately.",
       "revId": "a7bbf28e5b73dfd295efbd2bfa0b8aa0c50c9dca",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b398759_3499b41c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 33569
+      },
+      "writtenOn": "2025-08-31T18:37:53Z",
+      "side": 1,
+      "message": "I didn\u0027t experienced any issues so far. I\u0027ll diff the Tab configs to see if there\u0027s any unwanted configs.",
+      "parentUuid": "18661ad6_e5422698",
+      "revId": "a7bbf28e5b73dfd295efbd2bfa0b8aa0c50c9dca",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
