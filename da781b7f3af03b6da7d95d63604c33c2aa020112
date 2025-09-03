@@ -34,6 +34,24 @@
       "parentUuid": "004fad6b_64d6734c",
       "revId": "da781b7f3af03b6da7d95d63604c33c2aa020112",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a98209e5_86045c27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2025-09-03T14:21:37Z",
+      "side": 1,
+      "message": "Dunno, but I\u0027d double check with someone that has those variants (if supported by LineageOS)",
+      "parentUuid": "19074e88_28f12384",
+      "revId": "da781b7f3af03b6da7d95d63604c33c2aa020112",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
