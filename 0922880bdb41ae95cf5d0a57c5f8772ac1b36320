@@ -16,6 +16,23 @@
       "message": "Confirmed that only wifi variants have it disabled (seen in stock arch/arm64/configs/vendor/gts7lwifi_eur_open_defconfig).",
       "revId": "0922880bdb41ae95cf5d0a57c5f8772ac1b36320",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d4641f8_8b44b3c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-09-03T14:44:34Z",
+      "side": 1,
+      "message": "Thanks for pointing this out, @seba@sebaubuntu.dev. ;)",
+      "revId": "0922880bdb41ae95cf5d0a57c5f8772ac1b36320",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ],
   "submitRequirementResults": []
