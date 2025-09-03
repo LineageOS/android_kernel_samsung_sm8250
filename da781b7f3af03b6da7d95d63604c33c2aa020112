@@ -16,6 +16,24 @@
       "message": "Note: If you wanna fix it properly, you might want to disable the external modem devicetree node\n\nSM8250 is equipped with SDX55, which is an external modem, on your tablet you most likely don\u0027t have RIL, so that should be the reason",
       "revId": "da781b7f3af03b6da7d95d63604c33c2aa020112",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19074e88_28f12384",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-09-03T11:21:52Z",
+      "side": 1,
+      "message": "Yes, the issue that I am experiencing was on WiFi-only variants. I don\u0027t have any variant with RIL to verify that. Isn\u0027t this okay also, considering that Samsung never enabled it?",
+      "parentUuid": "004fad6b_64d6734c",
+      "revId": "da781b7f3af03b6da7d95d63604c33c2aa020112",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
