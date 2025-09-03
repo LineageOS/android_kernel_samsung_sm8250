@@ -128,6 +128,7 @@
 		samsung,no_qcom_pps;
 
 		samsung,support-optical-fingerprint;
+		samsung,optical-hbm-brightess = <303>;
 		samsung,not-support-single-tx; /* Do not support single tx */
 
 		/* *************************************************************
