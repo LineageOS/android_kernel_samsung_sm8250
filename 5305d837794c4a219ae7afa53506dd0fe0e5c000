@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16a8d7b0_8e83b24e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-09-03T00:13:49Z",
+      "side": 1,
+      "message": "Hold on, this is also enabling CORESIGHT. We want to keep it disabled.",
+      "revId": "5305d837794c4a219ae7afa53506dd0fe0e5c000",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
