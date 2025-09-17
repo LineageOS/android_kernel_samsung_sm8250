@@ -33,6 +33,24 @@
       "message": "Each config is a copy of other. We don\u0027t have to keep and check them seperately.",
       "revId": "394318ccd1ef7a9fd27310ded7a5b5df52cf7bfb",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c1de8fe_0a8762b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-09-17T15:01:14Z",
+      "side": 1,
+      "message": "IIRC, when I was doing s7 bringup configs were slightly different.",
+      "parentUuid": "e554aa3b_20e1f50e",
+      "revId": "394318ccd1ef7a9fd27310ded7a5b5df52cf7bfb",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
