@@ -33,6 +33,23 @@
       "message": "mm/kzerod needs an update from Samsung SM8350 due to VFS changes.",
       "revId": "2b46523c04c06d085891acbcb13e292b4f7c674b",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7385b9c2_3db5f002",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 33569
+      },
+      "writtenOn": "2025-09-17T14:20:41Z",
+      "side": 1,
+      "message": "Builds after 451780 and boots fine.",
+      "revId": "2b46523c04c06d085891acbcb13e292b4f7c674b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
