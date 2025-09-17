@@ -16,6 +16,23 @@
       "message": "It\u0027s fine not, at least on tabs s7/s7+.",
       "revId": "394318ccd1ef7a9fd27310ded7a5b5df52cf7bfb",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e554aa3b_20e1f50e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 33569
+      },
+      "writtenOn": "2025-09-17T03:18:42Z",
+      "side": 1,
+      "message": "Each config is a copy of other. We don\u0027t have to keep and check them seperately.",
+      "revId": "394318ccd1ef7a9fd27310ded7a5b5df52cf7bfb",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
