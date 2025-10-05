@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "912ad9a4_fe6709c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-10-05T10:14:34Z",
+      "side": 1,
+      "message": "Merge need to be redone as qcom_sm8250 chain was updated.",
+      "revId": "a0c92e65d376f4376444a6a6ff07b99713db43c8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
