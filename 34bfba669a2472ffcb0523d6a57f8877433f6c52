@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b857c045_701f82ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-10-14T00:28:01Z",
+      "side": 1,
+      "message": "You might want to try this instead: https://review.lineageos.org/c/LineageOS/android_device_samsung_gts7xlwifi/+/456474",
+      "revId": "34bfba669a2472ffcb0523d6a57f8877433f6c52",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
