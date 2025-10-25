@@ -16,6 +16,23 @@
       "message": "Were these properly regenerated?",
       "revId": "a0adaf676fba82212e838a392e1c41c3b9ad3876",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e46f13d2_1c3436c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 33569
+      },
+      "writtenOn": "2025-10-25T10:25:05Z",
+      "side": 1,
+      "message": "I believe I should use the script we used for regenerating them for the first time?",
+      "revId": "a0adaf676fba82212e838a392e1c41c3b9ad3876",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
