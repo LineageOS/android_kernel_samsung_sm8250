@@ -16,6 +16,24 @@
       "message": "Out of curiosity, was this working on r8q? It was broken on gts7xl(wifi).",
       "revId": "1d449e3251b6c7f8be4ba14b00bce4c4dcb1d5ba",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a4ccfd4_23279021",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 33569
+      },
+      "writtenOn": "2025-10-25T18:26:08Z",
+      "side": 1,
+      "message": "Yes. I used them on OneUI based roms but seems like they require some work on AOSP. I failed to make them work on gts7l though...",
+      "parentUuid": "c42fa332_487d2f87",
+      "revId": "1d449e3251b6c7f8be4ba14b00bce4c4dcb1d5ba",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ],
   "submitRequirementResults": []
