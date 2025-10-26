@@ -105,7 +105,9 @@ const struct file_operations ops_name = {				\
 /*
  * sec Log
  */
-#define SECLOG				"[sec_input]"
+#ifndef SECLOG
+#define SECLOG			"[sec_input]"
+#endif
 #define INPUT_LOG_BUF_SIZE		512
 #define INPUT_TCLM_LOG_BUF_SIZE		64
 
