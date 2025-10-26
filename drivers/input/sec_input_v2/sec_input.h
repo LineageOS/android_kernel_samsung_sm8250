@@ -8,6 +8,9 @@
  * published by the Free Software Foundation.
  */
 
+#ifndef _SEC_INPUT_H_
+#define _SEC_INPUT_H_
+
 #if IS_ENABLED(CONFIG_SEC_KUNIT)
 #include <kunit/test.h>
 #include <kunit/mock.h>
@@ -856,3 +859,4 @@ void stui_tsp_init(int (*stui_tsp_enter)(void), int (*stui_tsp_exit)(void), int 
 int stui_tsp_enter(void);
 int stui_tsp_exit(void);
 int stui_tsp_type(void);
+#endif //_SEC_INPUT_H_
