@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "458da9ff_b1818b27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-12-08T23:03:57Z",
+      "side": 1,
+      "message": "TODO: Move before merge commit. Still incomplete.",
+      "revId": "2e7b96db75c6e857229146b608f0b5ae9e0e53a8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
