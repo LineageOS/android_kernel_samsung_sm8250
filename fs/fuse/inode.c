@@ -257,7 +257,7 @@ void fuse_change_attributes(struct inode *inode, struct fuse_attr *attr,
 {
 	struct fuse_conn *fc = get_fuse_conn(inode);
 	struct fuse_inode *fi = get_fuse_inode(inode);
-	bool is_wb = fc->writeback_cache && !test_bit(FUSE_I_ATTR_FORCE_SYNC, &fi->state);
+	bool is_wb = fc->writeback_cache;
 	loff_t oldsize;
 	struct timespec64 old_mtime;
 
@@ -1286,8 +1286,6 @@ static void process_init_reply(struct fuse_mount *fm, struct fuse_args *args,
 		fc->conn_error = 1;
 	}
 
-	ST_LOG("<%s> dev = %u:%u  fuse Initialized",
-			__func__, MAJOR(fc->dev), MINOR(fc->dev));
 	fuse_set_initialized(fc);
 	wake_up_all(&fc->blocked_waitq);
 }
@@ -1334,8 +1332,6 @@ void fuse_send_init(struct fuse_mount *fm)
 	ia->args.nocreds = true;
 	ia->args.end = process_init_reply;
 
-	ST_LOG("<%s> dev = %u:%u  fuse send Init request",
-			__func__, MAJOR(fc->dev), MINOR(fc->dev));
 	if (unlikely(fm->fc->no_daemon) || fuse_simple_background(fm, &ia->args, GFP_KERNEL) != 0)
 		process_init_reply(fm, &ia->args, -ENOTCONN);
 }
@@ -1381,8 +1377,7 @@ static int fuse_bdi_init(struct fuse_conn *fc, struct super_block *sb)
 		return err;
 
 	/* fuse does it's own writeback accounting */
-	sb->s_bdi->capabilities = BDI_CAP_NO_ACCT_WB | BDI_CAP_STRICTLIMIT |
-				  BDI_CAP_SEC_DEBUG;
+	sb->s_bdi->capabilities = BDI_CAP_NO_ACCT_WB | BDI_CAP_STRICTLIMIT;
 
 	/*
 	 * For a single fuse filesystem use max 1% of dirty +
