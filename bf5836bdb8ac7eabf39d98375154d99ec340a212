@@ -54,6 +54,23 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af5c611d_63b2949e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 34512
+      },
+      "writtenOn": "2025-12-10T14:00:25Z",
+      "side": 1,
+      "message": "I dont think you need to remove SEC modifications, worked fine with my exy 850 samsung device",
+      "revId": "bf5836bdb8ac7eabf39d98375154d99ec340a212",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16ece58f_0ec6eaa3",
