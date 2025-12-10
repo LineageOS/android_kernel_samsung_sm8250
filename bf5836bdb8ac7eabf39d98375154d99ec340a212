@@ -51,6 +51,23 @@
       "message": "Should be \"int mmap_readaround_limit \u003d VM_READAHEAD_PAGES;\"",
       "revId": "bf5836bdb8ac7eabf39d98375154d99ec340a212",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "133fa2a3_c49fc3b0",
+        "filename": "mm/huge_memory.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1265,
+      "author": {
+        "id": 33569
+      },
+      "writtenOn": "2025-12-10T10:39:30Z",
+      "side": 1,
+      "message": "Also should be \"vma-\u003evm_flags\", not \"vma\".",
+      "revId": "bf5836bdb8ac7eabf39d98375154d99ec340a212",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
