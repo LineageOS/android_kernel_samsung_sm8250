@@ -366,21 +366,6 @@ static void fuse_dentry_release(struct dentry *dentry)
 }
 #endif
 
-/* @fs.sec -- 63ff82f9216c9b6d003e7d45699d54b833344719 -- */
-static int fuse_dentry_delete(const struct dentry *dentry)
-{
-	struct fuse_inode *fi;
-
-	if (d_really_is_negative(dentry))
-		return 0;
-
-	fi = get_fuse_inode(d_inode(dentry));
-	if (test_bit(FUSE_I_ATTR_FORCE_SYNC, &fi->state))
-		return 1;
-
-	return 0;
-}
-
 /*
  * Get the canonical path. Since we must translate to a path, this must be done
  * in the context of the userspace daemon, however, the userspace daemon cannot
