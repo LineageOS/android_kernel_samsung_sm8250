@@ -502,15 +502,13 @@ static void dma_buf_show_fdinfo(struct seq_file *m, struct file *file)
 }
 
 static const struct file_operations dma_buf_fops = {
-	.release	= dma_buf_file_release,
-	.mmap		= dma_buf_mmap_internal,
-	.llseek		= dma_buf_llseek,
-	.poll		= dma_buf_poll,
-	.unlocked_ioctl	= dma_buf_ioctl,
-#ifdef CONFIG_COMPAT
-	.compat_ioctl	= dma_buf_ioctl,
-#endif
-	.show_fdinfo	= dma_buf_show_fdinfo,
+	.release = dma_buf_file_release,
+	.mmap = dma_buf_mmap_internal,
+	.llseek = dma_buf_llseek,
+	.poll = dma_buf_poll,
+	.unlocked_ioctl = dma_buf_ioctl,
+	.compat_ioctl	= compat_ptr_ioctl,
+	.show_fdinfo = dma_buf_show_fdinfo,
 };
 
 /*
