@@ -16,6 +16,23 @@
       "message": "To squash into the merge commit. Can you verify on your end?",
       "revId": "5ede949be7422bd30d702f20709e0b8558dc9815",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1a517f1_9e2c0eb5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 33569
+      },
+      "writtenOn": "2026-01-02T03:39:21Z",
+      "side": 1,
+      "message": "What about adding 5.15 Samsung Fuse changes after cleaning stock Fuse changes and applying it after the merge? \n\nhttps://github.com/ata-kaner/kernel_samsung_sm8250/commit/7fc2a1e9bcee2daa98334f55c56d3fe819286121\n\nhttps://github.com/ata-kaner/kernel_samsung_sm8250/commit/eb5165e931113e68f7d79fd645dbfa16420daeec",
+      "revId": "5ede949be7422bd30d702f20709e0b8558dc9815",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
