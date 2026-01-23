@@ -980,7 +980,7 @@ bool oom_killer_disable(signed long timeout)
 					pr_info("%s process with TIF_MEMDIE %d %s %d\n",
 						__func__, child->pid, child->comm, ++nr_victims);
 		read_unlock(&tasklist_lock);
-		pr_info("%s failed oom_victims %d last_oom_jiffies %ld current %ld\n",
+		pr_info("%s failed oom_victims %d last_oom_jiffies %lld current %ld\n",
 			__func__, atomic_read(&oom_victims),
 			atomic64_read(&last_oom_jiffies), jiffies);
 
