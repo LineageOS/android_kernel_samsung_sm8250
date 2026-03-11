@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "277a78fb_41a5e3df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 36786
+      },
+      "writtenOn": "2026-03-11T19:21:26Z",
+      "side": 1,
+      "message": "Compiled and tested on a physical Galaxy Tab S7. The POGO trackpad is now fully usable with the Android UI.",
+      "revId": "103d569a925c9c1385563b99c428841583db5ef7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
