@@ -655,6 +655,11 @@ static int stm32_touchpad_set_input_dev(struct stm32_touchpad_dev *device_data)
 	input_set_abs_params(input_dev, ABS_MT_TOUCH_MAJOR, 0, 255, 0, 0);
 	input_mt_init_slots(input_dev, STM32_TOUCH_MAX_FINGER_NUM, INPUT_MT_POINTER);
 
+	input_abs_set_res(input_dev, ABS_X, 14);
+        input_abs_set_res(input_dev, ABS_Y, 14);
+        input_abs_set_res(input_dev, ABS_MT_POSITION_X, 14);
+        input_abs_set_res(input_dev, ABS_MT_POSITION_Y, 14);
+
 	for (i = 0; i < STM32_TOUCH_MAX_FINGER_NUM; i++) {
 		device_data->edge_touch[i].action = TOUCHED_AREA_RELEASED;
 		device_data->coord[i].action = TOUCH_ACTION_RELEASE;
