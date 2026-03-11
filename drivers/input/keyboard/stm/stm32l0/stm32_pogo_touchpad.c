@@ -182,6 +182,7 @@ static void stm32_release_all_finger(struct stm32_touchpad_dev *stm32)
 	input_report_key(stm32->input_dev, BTN_TOUCH, 0);
 	input_report_key(stm32->input_dev, BTN_TOOL_FINGER, 0);
 
+	input_mt_sync_frame(stm32->input_dev);
 	input_sync(stm32->input_dev);
 }
 
@@ -499,13 +500,14 @@ static void stm32_pogo_touchpad_event(struct stm32_touchpad_dev *stm32, char *ev
 				//else
 				//	stm32_print_event(stm32, i, GENERATE_MOVE);
 
-				if (w == 0)
-					w = 1;
+				if (w < 45)
+					w = 45;
 
 				input_mt_slot(stm32->input_dev, i);
 				input_mt_report_slot_state(stm32->input_dev, MT_TOOL_FINGER, 1);
 
 				input_report_abs(stm32->input_dev, ABS_MT_TOUCH_MAJOR, (u32)w);
+				input_report_abs(stm32->input_dev, ABS_MT_PRESSURE, (u32)w);
 				input_report_abs(stm32->input_dev, ABS_MT_POSITION_X, x);
 				input_report_abs(stm32->input_dev, ABS_MT_POSITION_Y, y);
 				input_report_key(stm32->input_dev, BTN_TOUCH, 1);
@@ -569,6 +571,7 @@ out_sync:
 		}
 	}
 
+	input_mt_sync_frame(stm32->input_dev);
 	input_sync(stm32->input_dev);
 }
 
@@ -635,6 +638,7 @@ static int stm32_touchpad_set_input_dev(struct stm32_touchpad_dev *device_data)
 	set_bit(EV_KEY, input_dev->evbit);
 	set_bit(EV_ABS, input_dev->evbit);
 	set_bit(INPUT_PROP_POINTER, input_dev->propbit);
+	set_bit(INPUT_PROP_BUTTONPAD, input_dev->propbit);
 	set_bit(BTN_TOUCH, input_dev->keybit);
 	set_bit(BTN_TOOL_FINGER, input_dev->keybit);
 	set_bit(BTN_LEFT, input_dev->keybit);
@@ -653,6 +657,7 @@ static int stm32_touchpad_set_input_dev(struct stm32_touchpad_dev *device_data)
 				0, device_data->dtdata->max_y - 1, 0, 0);
 	}
 	input_set_abs_params(input_dev, ABS_MT_TOUCH_MAJOR, 0, 255, 0, 0);
+	input_set_abs_params(input_dev, ABS_MT_PRESSURE, 0, 255, 0, 0);
 	input_mt_init_slots(input_dev, STM32_TOUCH_MAX_FINGER_NUM, INPUT_MT_POINTER);
 
 	input_abs_set_res(input_dev, ABS_X, 14);
