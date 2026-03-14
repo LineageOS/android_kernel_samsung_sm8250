@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1749fc82_c44179b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2026-03-14T13:41:57Z",
+      "side": 1,
+      "message": "Thanks for the patch. I can\u0027t validate this myself, since I don\u0027t have the cover with a trackpad.",
+      "revId": "4910fe83f91f340e28ada2c956a5ca39676dc619",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
