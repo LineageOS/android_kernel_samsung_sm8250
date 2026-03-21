@@ -1217,7 +1217,6 @@ static int __ref kernel_init(void *unused)
 	async_synchronize_full();
 #ifndef CONFIG_DEFERRED_INITCALLS
 	ftrace_free_init_mem();
-	jump_label_invalidate_initmem();
 	free_initmem();
 #endif
 	mark_readonly();
