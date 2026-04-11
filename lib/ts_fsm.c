@@ -251,8 +251,7 @@ startover:
 		block_idx++;
 	}
 
-	if (end_of_data())
-		goto found_match;
+	goto found_match;
 
 no_match:
 	return UINT_MAX;
