@@ -152,7 +152,13 @@ static unsigned int fsm_find(struct ts_config *conf, struct ts_state *state)
 	do {				\
 		if (strict)		\
 			goto no_match;	\
-		block_idx++;		\
+		if (match_start < consumed) { \
+			consumed = match_start + 1; \
+			block_idx = 0; \
+			block_len = conf->get_next_block(consumed, &data, conf, state); \
+		} else { \
+			block_idx = match_start - consumed + 1; \
+		} \
 		goto startover;		\
 	} while(0)
 
