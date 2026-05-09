@@ -1815,6 +1815,15 @@ static struct ctl_table vm_table[] = {
 #else
 		.extra2		= &one_hundred,
 #endif
+	{
+	},
+		.procname       = "want_old_faultaround_pte",
+		.data           = &want_old_faultaround_pte,
+		.maxlen         = sizeof(want_old_faultaround_pte),
+		.mode           = 0644,
+		.proc_handler   = proc_dointvec_minmax,
+		.extra1         = &zero,
+		.extra2         = &one,
 	},
 	{
 		.procname	= "mmap_readaround_limit",
