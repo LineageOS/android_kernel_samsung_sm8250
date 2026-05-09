@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3e3675c2_7e02f042",
+        "filename": "drivers/mmc/core/core.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 3832,
+      "author": {
+        "id": 33569
+      },
+      "writtenOn": "2026-05-09T16:59:25Z",
+      "side": 1,
+      "message": "Nope. We\u0027ll just put the SD express check before the loop, just like the original commit rather than what SM8250 merge commit does.\n\n\t/* If an SD express card is present, then leave it as is. */\n\tif (mmc_card_sd_express(host)) {\n\t\tmmc_release_host(host);\n\t\tgoto out;\n\t}\n\n\tfor (i \u003d 0; i \u003c ARRAY_SIZE(freqs); i++) {\n\t\tif (!mmc_rescan_try_freq(host, max(freqs[i], host-\u003ef_min))) {\n\t\t\textend_wakelock \u003d true;\n\t\t\tbreak;\n\t\t}\n\t\tif (freqs[i] \u003c\u003d host-\u003ef_min)\n\t\t\tbreak;\n\t}\n\t\n\t\nSM8550 also follows the same logic.\n\nhttps://github.com/LineageOS/android_kernel_qcom_sm8550/blob/20a41725840105eafa41ad161dc8e4112f12f11f/drivers/mmc/core/core.c#L2246",
+      "parentUuid": "754a3e0f_4bb79f6e",
+      "revId": "e431ab39968e55846e6ef8b0df23e6de6d8ee12e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "80a9023c_f6bdba7f",
         "filename": "scripts/Makefile.lib",
         "patchSetId": 7
