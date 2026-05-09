@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a54d0d96_f65b07ac",
+        "filename": "drivers/mmc/core/core.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 3832,
+      "author": {
+        "id": 33569
+      },
+      "writtenOn": "2026-05-09T16:28:02Z",
+      "side": 1,
+      "message": "How about following the original change? We already have the \"for (i \u003d 0; i \u003c ARRAY_SIZE(freqs); i++)\" loop from Samsung. \"mmc_rescan_try_freq()\" is already called inside this loop as well.\n\nhttps://github.com/LineageOS/android_kernel_qcom_sm8250/commit/85db779a8c0188fda8e47456652c6a6a5dc165a2",
+      "revId": "e431ab39968e55846e6ef8b0df23e6de6d8ee12e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "80a9023c_f6bdba7f",
         "filename": "scripts/Makefile.lib",
         "patchSetId": 7
