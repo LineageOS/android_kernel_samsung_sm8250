@@ -16,6 +16,23 @@
       "message": "Added reviewers whom is responsible for this code :)",
       "revId": "025e437ce5e31ff933d58e7cfffe5501c4268d05",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10089638_2ba12f6d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 33569
+      },
+      "writtenOn": "2026-05-09T17:20:44Z",
+      "side": 1,
+      "message": "What is the purpose of this patchset? I mean why should we merge, can you elaborate a bit please? As far as I can tell, this is not an upstream change.",
+      "revId": "025e437ce5e31ff933d58e7cfffe5501c4268d05",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
