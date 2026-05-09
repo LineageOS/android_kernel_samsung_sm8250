@@ -72,6 +72,24 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8c644e0_8232807b",
+        "filename": "drivers/mmc/core/core.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 3832,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2026-05-09T17:09:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "844c67f2_7320e750",
+      "revId": "e431ab39968e55846e6ef8b0df23e6de6d8ee12e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80a9023c_f6bdba7f",
