@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80a9023c_f6bdba7f",
+        "filename": "scripts/Makefile.lib",
+        "patchSetId": 7
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 33569
+      },
+      "writtenOn": "2026-05-09T16:19:21Z",
+      "side": 1,
+      "message": "There is a conflict with the commit d9592c78dc6cefdd1190327b07bae575a805ac9c (\"sm8250: force use prebuilt Android DTC\")\n\nFATAL ERROR: Unrecognized check name \"avoid_unnecessary_addr_size\"\nmake[4]: *** [scripts/Makefile.lib:303: arch/arm64/boot/dts/samsung/r8q/../../vendor/qcom/kona.dtb] Error 1\nmake[3]: *** [/home/atakan/android/lineage/kernel/samsung/sm8250/scripts/Makefile.build:642: arch/arm64/boot/dts/samsung/r8q] Error 2\nmake[2]: *** [/home/atakan/android/lineage/kernel/samsung/sm8250/scripts/Makefile.build:642: arch/arm64/boot/dts/samsung] Error 2\nmake[1]: *** [arch/arm64/Makefile:171: dtbs] Error 2\n  CC      techpack/sec-camera/drivers/cam_sensor_module/cam_csiphy/cam_csiphy_dev.o\nmake[1]: *** Waiting for unfinished jobs....",
+      "revId": "e431ab39968e55846e6ef8b0df23e6de6d8ee12e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
