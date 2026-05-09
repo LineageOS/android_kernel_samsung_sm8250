@@ -33,6 +33,24 @@
       "message": "What is the purpose of this patchset? I mean why should we merge, can you elaborate a bit please? As far as I can tell, this is not an upstream change.",
       "revId": "025e437ce5e31ff933d58e7cfffe5501c4268d05",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bde7b461_29436f08",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 37004
+      },
+      "writtenOn": "2026-05-09T18:12:49Z",
+      "side": 1,
+      "message": "Hello ata! \n\nSo this patchset fixes a known IDS evasion\n\nIt isn\u0027t in upstream because I haven\u0027t pushed it there..\n\nBasically, if the user submits firewall rules, it should BLOCK, right? If the BLOCK rule is set, it still doesn\u0027t get dropped (the ping).",
+      "parentUuid": "10089638_2ba12f6d",
+      "revId": "025e437ce5e31ff933d58e7cfffe5501c4268d05",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
