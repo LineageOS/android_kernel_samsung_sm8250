@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c264acd8_92e1a04f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2026-05-16T14:36:58Z",
+      "side": 1,
+      "message": "Please verify r8q with this chain. Tab S7 now boots with enforced CFI_CLANG.",
+      "revId": "538bb2300cb22b2bfb9aa4ec57e2584244a4c883",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
