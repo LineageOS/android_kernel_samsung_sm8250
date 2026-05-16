@@ -439,11 +439,11 @@ static void mt_get_feature(struct hid_device *hdev, struct hid_report *report)
 		dev_warn(&hdev->dev, "failed to fetch feature %d\n",
 			 report->id);
 	} else {
+		/* The report ID in the request and the response should match */
 		rep_enum = &hdev->report_enum[HID_FEATURE_REPORT];
 		if (rep_enum->numbered && report->id != buf[0]) {
-			dev_warn(&hdev->dev, "Invalid reportID received, expected %d got %d\n", report->id, buf[0]);
-			kfree(buf);
-			return;
+			hid_err(hdev, "Returned feature report did not match the request\n");
+			goto free;
 		}
 
 		ret = hid_report_raw_event(hdev, HID_FEATURE_REPORT, buf,
@@ -452,6 +452,7 @@ static void mt_get_feature(struct hid_device *hdev, struct hid_report *report)
 			dev_warn(&hdev->dev, "failed to report feature\n");
 	}
 
+free:
 	kfree(buf);
 }
 
