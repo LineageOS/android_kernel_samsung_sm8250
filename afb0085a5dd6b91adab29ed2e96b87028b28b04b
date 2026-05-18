@@ -33,6 +33,23 @@
       "message": "r8q is fine",
       "revId": "afb0085a5dd6b91adab29ed2e96b87028b28b04b",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b9048f6_1d525610",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 33569
+      },
+      "writtenOn": "2026-05-18T20:16:08Z",
+      "side": 1,
+      "message": "We may also kill the entire FIPS-140-2, as it is disabled for AOSP builds. Vmlinux has to be instrumented to make it work properly, which simply doesn\u0027t work anymore due to upstream.",
+      "revId": "afb0085a5dd6b91adab29ed2e96b87028b28b04b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
