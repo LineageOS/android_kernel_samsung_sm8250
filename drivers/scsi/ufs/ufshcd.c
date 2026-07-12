@@ -9410,6 +9410,7 @@ cleanup:
 
 out:
 	if (!err) {
+		lrbp->cmd = NULL;
 		err = SUCCESS;
 		if ((hba->dev_info.quirks & UFS_DEVICE_QUIRK_SUPPORT_QUERY_FATAL_MODE) &&
 				!hba->UFS_fatal_mode_done) {
