@@ -4362,6 +4362,7 @@ static int dp_display_unprepare(struct dp_display *dp_display, void *panel)
 	struct dp_display_private *dp;
 	struct dp_panel *dp_panel = panel;
 	u32 flags = 0;
+	bool retain_link_power;
 
 	if (!dp_display || !panel) {
 		DP_ERR("invalid input\n");
@@ -4391,18 +4392,28 @@ static int dp_display_unprepare(struct dp_display *dp_display, void *panel)
 	if (dp->active_stream_cnt)
 		goto end;
 
-	if (flags & DP_PANEL_SRC_INITIATED_POWER_DOWN) {
-		dp->link->psm_config(dp->link, &dp->panel->link_info, true);
-		dp->debug->psm_enabled = true;
+	retain_link_power = IS_ENABLED(CONFIG_SEC_DISPLAYPORT_RETAIN_LINK_POWER) &&
+		(flags & DP_PANEL_SRC_INITIATED_POWER_DOWN) &&
+		!dp_display_state_is(DP_STATE_SUSPENDED);
 
-		dp->ctrl->off(dp->ctrl);
-		dp_display_host_unready(dp);
-		dp_display_host_deinit(dp);
-		dp_display_state_add(DP_STATE_SRC_PWRDN);
+	if (flags & DP_PANEL_SRC_INITIATED_POWER_DOWN) {
+		if (retain_link_power) {
+			dp->debug->psm_enabled = false;
+			DP_INFO("retain link power during source initiated unprepare\n");
+		} else {
+			dp->link->psm_config(dp->link, &dp->panel->link_info, true);
+			dp->debug->psm_enabled = true;
+
+			dp->ctrl->off(dp->ctrl);
+			dp_display_host_unready(dp);
+			dp_display_host_deinit(dp);
+			dp_display_state_add(DP_STATE_SRC_PWRDN);
+		}
 	}
 
 	dp_display_state_remove(DP_STATE_ENABLED);
-	dp->aux->state = DP_STATE_CTRL_POWERED_OFF;
+	dp->aux->state = retain_link_power ?
+			DP_STATE_CTRL_POWERED_ON : DP_STATE_CTRL_POWERED_OFF;
 
 	complete_all(&dp->notification_comp);
 

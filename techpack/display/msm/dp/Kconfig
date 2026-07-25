@@ -35,3 +35,9 @@ config SEC_DISPLAYPORT_AUX_CONTROL
 	default n
 	help
           Support for AUX dongle control.
+
+config SEC_DISPLAYPORT_RETAIN_LINK_POWER
+	bool "SEC DISPLAYPORT retain link power workaround"
+	default n
+	help
+          Samsung specific workaround for displayport.
