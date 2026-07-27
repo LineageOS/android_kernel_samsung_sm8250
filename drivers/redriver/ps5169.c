@@ -31,7 +31,7 @@ static char REDRV_MODE_Print[6][19] = {
 	{"CHECK_EXIST"},
 };
 
-int ps5169_i2c_check() 
+int ps5169_i2c_check(void)
 {
 
 	int value = 0;
