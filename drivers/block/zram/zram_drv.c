@@ -36,6 +36,7 @@
 #include <linux/kthread.h>
 #include <linux/freezer.h>
 #include <linux/jiffies.h>
+#include <linux/memcontrol.h>
 #include <linux/vmstat.h>
 #include <linux/statfs.h>
 #include <linux/swap.h>
@@ -2769,6 +2770,7 @@ static int __zram_bvec_write(struct zram *zram, struct bio_vec *bvec,
 	enum zram_pageflags flags = 0;
 #ifdef CONFIG_ZRAM_LRU_WRITEBACK
 	unsigned long irq_flags;
+	struct mem_cgroup *memcg;
 #endif
 
 	mem = kmap_atomic(page);
@@ -2877,8 +2879,9 @@ out:
 		zram_set_entry(zram, index, entry);
 		zram_set_obj_size(zram, index, comp_len);
 #ifdef CONFIG_ZRAM_LRU_WRITEBACK
-		if (!page->mem_cgroup ||
-		    page->mem_cgroup->swappiness != NON_LRU_SWAPPINESS) {
+		memcg = page_memcg(page);
+
+		if (!memcg || memcg->swappiness != NON_LRU_SWAPPINESS) {
 			spin_lock_irqsave(&zram->list_lock, irq_flags);
 			list_add_tail(&zram->table[index].lru_list, &zram->list);
 			spin_unlock_irqrestore(&zram->list_lock, irq_flags);
