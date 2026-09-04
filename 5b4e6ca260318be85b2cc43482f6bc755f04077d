@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "750b8aa2_4e6c7d23",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 37739
+      },
+      "writtenOn": "2026-09-04T22:14:51Z",
+      "side": 1,
+      "message": "Kernel compiles and boots fine on r8q.",
+      "revId": "5b4e6ca260318be85b2cc43482f6bc755f04077d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
