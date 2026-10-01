@@ -256,5 +256,16 @@ int crypto_rng_check_entropy(struct crypto_rng *rng)
 EXPORT_SYMBOL_GPL(crypto_rng_check_entropy);
 #endif
 
+static void __exit rng_exit(void)
+{
+	int err;
+
+	err = crypto_del_default_rng();
+	if (err)
+		pr_err("Failed delete default RNG: %d\n", err);
+}
+
+module_exit(rng_exit);
+
 MODULE_LICENSE("GPL");
 MODULE_DESCRIPTION("Random Number Generator");
