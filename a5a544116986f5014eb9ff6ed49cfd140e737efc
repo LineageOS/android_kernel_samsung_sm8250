@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5532e5d5_0266f917",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2026-10-06T00:24:22Z",
+      "side": 1,
+      "message": "Check this one on r8q. I need it for gts7, so that FOD works fine at any screen brightness.",
+      "revId": "a5a544116986f5014eb9ff6ed49cfd140e737efc",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
