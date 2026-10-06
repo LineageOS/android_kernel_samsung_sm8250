@@ -335,6 +335,8 @@ struct sde_crtc {
 
 	struct mutex crtc_lock;
 	struct mutex crtc_cp_lock;
+	/* FOD state used when programming the display-wide PCC. */
+	bool cp_fod_enabled;
 	struct mutex vblank_modeset_ctrl_lock;
 
 	atomic_t frame_pending;
