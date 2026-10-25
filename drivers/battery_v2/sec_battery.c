@@ -8382,6 +8382,14 @@ static int sec_bat_cable_check(struct sec_battery_info *battery,
 {
 	int current_cable_type = -1;
 	union power_supply_propval val = {0, };
+	int batt_present = 1;
+	int ret;
+
+	ret = psy_do_property(battery->pdata->charger_name, get, POWER_SUPPLY_PROP_PRESENT, val);
+	if (ret >= 0) {
+		batt_present = val.intval;
+		pr_info("%s: batt_present(%d)\n", __func__, batt_present);
+	}
 
 	pr_info("[%s]ATTACHED(%d)\n", __func__, attached_dev);
 
@@ -8499,6 +8507,17 @@ static int sec_bat_cable_check(struct sec_battery_info *battery,
 	default:
 		pr_err("%s: invalid type for charger:%d\n",
 			__func__, attached_dev);
+		break;
+	}
+
+	switch (attached_dev) {
+	case ATTACHED_DEV_JIG_UART_OFF_MUIC:
+	case ATTACHED_DEV_JIG_UART_OFF_VB_MUIC:
+	case ATTACHED_DEV_JIG_UART_OFF_VB_FG_MUIC:
+		if (batt_present == 0)
+			psy_do_property(battery->pdata->fuelgauge_name, set, POWER_SUPPLY_EXT_PROP_FAKE_SOC, val);
+		break;
+	default:
 		break;
 	}
 

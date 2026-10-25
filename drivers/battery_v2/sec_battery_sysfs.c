@@ -252,6 +252,7 @@ static struct device_attribute sec_battery_attrs[] = {
 	SEC_BATTERY_ATTR(pd_disable),
 	SEC_BATTERY_ATTR(batt_full_capacity),
 	SEC_BATTERY_ATTR(lrp),
+	SEC_BATTERY_ATTR(state_of_health),
 };
 
 void update_external_temp_table(struct sec_battery_info *battery, int temp[])
@@ -1896,6 +1897,11 @@ ssize_t sec_bat_show_attrs(struct device *dev,
 		break;
 	case LRP:
 		i += scnprintf(buf + i, PAGE_SIZE - i, "%d\n", battery->lrp);
+		break;
+	case STATE_OF_HEALTH:
+		psy_do_property(battery->pdata->fuelgauge_name, get,
+				POWER_SUPPLY_PROP_HEALTH, value);
+		i += scnprintf(buf + i, PAGE_SIZE - i, "%d\n", value.intval);
 		break;
 	default:
 		i = -EINVAL;

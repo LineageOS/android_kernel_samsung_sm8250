@@ -274,6 +274,7 @@ enum {
 	PD_DISABLE,
 	BATT_FULL_CAPACITY,
 	LRP,
+	STATE_OF_HEALTH,
 };
 
 #endif /* __SEC_BATTERY_SYSFS_H */
